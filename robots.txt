@@ -1,5 +1,5 @@
 # robots.txt — Photo Square, Maynaguri
-# https://www.photosquaremaynaguri.com/
+# https://www.photosquare.co.in/
 
 User-agent: *
 Allow: /
@@ -35,8 +35,9 @@ User-agent: MJ12bot
 Disallow: /
 
 # All sitemaps
-Sitemap: https://www.photosquaremaynaguri.com/sitemap.xml
-Sitemap: https://www.photosquaremaynaguri.com/sitemap-pages.xml
-Sitemap: https://www.photosquaremaynaguri.com/sitemap-services.xml
-Sitemap: https://www.photosquaremaynaguri.com/sitemap-images.xml
-Sitemap: https://www.photosquaremaynaguri.com/sitemap-local.xml
+Sitemap: https://www.photosquare.co.in/sitemap.xml
+Sitemap: https://www.photosquare.co.in/sitemap-pages.xml
+Sitemap: https://www.photosquare.co.in/sitemap-services.xml
+Sitemap: https://www.photosquare.co.in/sitemap-images.xml
+Sitemap: https://www.photosquare.co.in/sitemap-local.xml
+Sitemap: https://www.photosquare.co.in/sitemap-blog.xml

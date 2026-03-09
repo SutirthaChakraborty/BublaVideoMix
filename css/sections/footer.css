@@ -33,6 +33,17 @@
   font-size: 18px;
 }
 
+.footer__brand-logo-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  background: #fff;
+  padding: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  flex-shrink: 0;
+}
+
 .footer__tagline {
   font-size: var(--text-sm);
   line-height: 1.7;

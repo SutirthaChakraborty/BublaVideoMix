@@ -50,6 +50,17 @@
   font-size: 20px;
 }
 
+.nav__logo-img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  border-radius: var(--radius-md);
+  background: #fff;
+  padding: 3px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  flex-shrink: 0;
+}
+
 .nav__logo-text {
   font-family: 'Playfair Display', serif;
   font-size: var(--text-lg);

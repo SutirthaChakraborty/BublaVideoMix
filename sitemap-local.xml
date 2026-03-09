@@ -12,28 +12,28 @@
 
   <!-- "photo studio near me" / "photo studio Maynaguri" -->
   <url>
-    <loc>https://www.photosquaremaynaguri.com/</loc>
+    <loc>https://www.photosquare.co.in/</loc>
     <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquaremaynaguri.com/"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquaremaynaguri.com/?lang=bn"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.photosquaremaynaguri.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquare.co.in/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquare.co.in/?lang=bn"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.photosquare.co.in/"/>
   </url>
 
   <!-- "photo printing Maynaguri" / "print photos Jalpaiguri" -->
   <url>
-    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <loc>https://www.photosquare.co.in/#services</loc>
     <lastmod>2026-03-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquaremaynaguri.com/#services"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquaremaynaguri.com/?lang=bn#services"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquare.co.in/#services"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquare.co.in/?lang=bn#services"/>
   </url>
 
   <!-- "passport photo Maynaguri" / "passport size photo near me" -->
   <url>
-    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <loc>https://www.photosquare.co.in/#services</loc>
     <lastmod>2026-03-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
@@ -41,17 +41,17 @@
 
   <!-- "wedding videography Maynaguri" / "wedding photographer near me" -->
   <url>
-    <loc>https://www.photosquaremaynaguri.com/#videos</loc>
+    <loc>https://www.photosquare.co.in/#videos</loc>
     <lastmod>2026-03-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquaremaynaguri.com/#videos"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquaremaynaguri.com/?lang=bn#videos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquare.co.in/#videos"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquare.co.in/?lang=bn#videos"/>
   </url>
 
   <!-- "photo restoration Maynaguri" / "old photo repair near me" -->
   <url>
-    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <loc>https://www.photosquare.co.in/#services</loc>
     <lastmod>2026-03-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
@@ -59,7 +59,7 @@
 
   <!-- "lamination near me" / "photo lamination Jalpaiguri district" -->
   <url>
-    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <loc>https://www.photosquare.co.in/#services</loc>
     <lastmod>2026-03-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -67,22 +67,22 @@
 
   <!-- "contact photo studio Maynaguri" / "Old Market Maynaguri 735224" -->
   <url>
-    <loc>https://www.photosquaremaynaguri.com/#contact</loc>
+    <loc>https://www.photosquare.co.in/#contact</loc>
     <lastmod>2026-03-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquaremaynaguri.com/#contact"/>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquaremaynaguri.com/?lang=bn#contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquare.co.in/#contact"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquare.co.in/?lang=bn#contact"/>
   </url>
 
   <!-- Bengali locale: ফটো স্টুডিও ময়নাগুড়ি -->
   <url>
-    <loc>https://www.photosquaremaynaguri.com/?lang=bn</loc>
+    <loc>https://www.photosquare.co.in/?lang=bn</loc>
     <lastmod>2026-03-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquaremaynaguri.com/?lang=bn"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquaremaynaguri.com/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquare.co.in/?lang=bn"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquare.co.in/"/>
   </url>
 
 </urlset>

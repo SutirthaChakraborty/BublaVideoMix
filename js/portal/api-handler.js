@@ -5,7 +5,7 @@
 /** Default API key — users can override in Settings */
 const DEFAULT_API_KEY = 'AIzaSyC0MwuhMdlE0t2UYN-TyjamOjjxfljj1VY';
 const STORAGE_KEY     = 'ps-gemini-api-key';
-const GEMINI_MODEL    = 'gemini-2.0-flash-preview-image-generation';
+const GEMINI_MODEL    = 'gemini-2.5-flash-image';
 const API_TIMEOUT_MS  = 60000;
 
 /** Returns the active API key (user-saved or default) */
@@ -84,7 +84,7 @@ function buildFullPrompt(toolPrompt, customText, negativePrompt) {
  * API reference:
  *   https://ai.google.dev/gemini-api/docs/image-generation
  *
- * Model: gemini-2.0-flash-preview-image-generation
+ * Model: gemini-2.5-flash-image
  * Endpoint: POST https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent
  *
  * Request body:
