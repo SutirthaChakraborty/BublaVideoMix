@@ -2,11 +2,17 @@
    PHOTO SQUARE — API Handler (Gemini Image Generation)
    ============================================================ */
 
-/** Default API key — users can override in Settings */
-const DEFAULT_API_KEY = 'AIzaSyC0MwuhMdlE0t2UYN-TyjamOjjxfljj1VY';
+/** Default API key — users must set their own key in Settings (⚙️) */
+const DEFAULT_API_KEY = '';  // intentionally blank — default was revoked
 const STORAGE_KEY     = 'ps-gemini-api-key';
-const GEMINI_MODEL    = 'gemini-2.0-flash-preview-image-generation';
-const API_TIMEOUT_MS  = 60000;
+
+/**
+ * Model priority list — most capable first.
+ * gemini-2.5-flash-image  : stable, image generation + editing (confirmed working)
+ * gemini-3.1-flash-image-preview : newer preview with 2K/4K output support
+ */
+const GEMINI_MODEL    = 'gemini-2.5-flash-image';
+const API_TIMEOUT_MS  = 90000;  // 90s — image gen can be slow
 
 /** Default negative prompt terms always included to improve quality */
 const DEFAULT_NEGATIVE_PROMPTS = [
@@ -16,9 +22,15 @@ const DEFAULT_NEGATIVE_PROMPTS = [
   'low quality', 'overexposed', 'underexposed', 'color bleeding',
 ].join(', ');
 
-/** Returns the active API key (user-saved or default) */
+/** Returns the user-saved API key, or empty string if none set */
 export function getActiveApiKey() {
   return localStorage.getItem(STORAGE_KEY) || DEFAULT_API_KEY;
+}
+
+/** Returns true if a usable key is available */
+export function hasUsableApiKey() {
+  const k = getActiveApiKey();
+  return k && k.length > 10;
 }
 
 /** Saves a custom API key to localStorage */
@@ -99,7 +111,7 @@ function buildFullPrompt(toolPrompt, customText, negativePrompt) {
  * API reference:
  *   https://ai.google.dev/gemini-api/docs/image-generation
  *
- * Model: gemini-2.0-flash-preview-image-generation
+ * Model: gemini-2.5-flash-image (stable)
  * Endpoint: POST https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent
  *
  * Request body:
@@ -112,6 +124,10 @@ function buildFullPrompt(toolPrompt, customText, negativePrompt) {
  */
 async function generateWithGemini(imageBase64, prompt) {
   const apiKey = getActiveApiKey();
+
+  if (!apiKey) {
+    throw new Error('No API key set. Click ⚙️ Settings to enter your Gemini API key. Get one free at aistudio.google.com/apikey');
+  }
 
   // Separate mime type and raw base64 data from the data URL
   const mimeMatch = imageBase64.match(/^data:([^;]+);base64,/);
@@ -164,10 +180,10 @@ async function generateWithGemini(imageBase64, prompt) {
       msg = errJson.error?.message || msg;
       // Surface API key errors clearly
       if (res.status === 400 && msg.includes('API key')) {
-        msg = 'Invalid API key. Go to Settings (⚙️) to update it.';
+        msg = 'Invalid API key. Click ⚙️ Settings to update it.';
       }
       if (res.status === 403) {
-        msg = 'API key does not have permission to use this model. Check Settings (⚙️).';
+        msg = 'API key denied (403). It may be revoked, leaked, or lack access to this model. Click ⚙️ Settings to enter a valid key.';
       }
     } catch { /* ignore JSON parse errors */ }
     throw new Error(msg);

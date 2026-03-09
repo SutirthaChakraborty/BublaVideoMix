@@ -124,7 +124,7 @@
         </div>
 
         <div class="api-modal__footer">
-          <button class="btn btn--outline-blue" id="apiKeyReset" data-i18n="portal.api_key_reset">Reset to Default</button>
+          <button class="btn btn--outline-blue" id="apiKeyReset" data-i18n="portal.api_key_reset">Clear Key</button>
           <button class="btn btn--gold" id="apiKeySave" data-i18n="portal.api_key_save">Save Key</button>
         </div>
       </div>
@@ -304,6 +304,17 @@
     initAuth();
     initDashboard();
 
+    // Auto-open settings if no API key has been set yet
+    if (!hasCustomApiKey()) {
+      // small delay so the dashboard transition finishes first
+      setTimeout(() => {
+        const apiSettingsBtn = document.getElementById('apiSettingsBtn');
+        if (apiSettingsBtn && sessionStorage.getItem('ps-portal-auth') === 'true') {
+          apiSettingsBtn.click();
+        }
+      }, 800);
+    }
+
     /* ── API Settings Modal ────────────────────────────────────── */
     const apiModal        = document.getElementById('apiModal');
     const apiSettingsBtn  = document.getElementById('apiSettingsBtn');
@@ -372,12 +383,11 @@
       setTimeout(closeApiModal, 1200);
     });
 
-    // Reset to default
+    // Reset key (no built-in default exists — just clear and prompt)
     apiKeyReset.addEventListener('click', () => {
       resetApiKey();
       apiKeyInput.value = '';
-      showStatus('✓ Reverted to the built-in default key.', 'success');
-      setTimeout(closeApiModal, 1200);
+      showStatus('Key cleared. Enter your own Gemini API key above.', 'success');
     });
   </script>
 

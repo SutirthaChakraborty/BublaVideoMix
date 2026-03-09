@@ -56,6 +56,15 @@ export function initDashboard() {
       return;
     }
 
+    // Guard: require an API key before hitting the network
+    const { hasUsableApiKey } = await import('./api-handler.js');
+    if (!hasUsableApiKey()) {
+      const settingsBtn = document.getElementById('apiSettingsBtn');
+      if (settingsBtn) settingsBtn.click();
+      alert('Please enter your Gemini API key in Settings (⚙️) first.\n\nGet a free key at: aistudio.google.com/apikey');
+      return;
+    }
+
     // generatePrompt() now includes additional instructions inside the prompt text
     const prompt = promptBuilder.generatePrompt();
     if (!prompt) return;
