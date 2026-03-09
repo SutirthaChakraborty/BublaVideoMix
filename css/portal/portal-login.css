@@ -1,0 +1,130 @@
+/* ============================================================
+   PHOTO SQUARE — Portal Login Styles
+   ============================================================ */
+
+.portal-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: linear-gradient(135deg, var(--royal-blue-dark) 0%, var(--royal-blue) 50%, var(--royal-blue-light) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.portal-login__card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-3xl) var(--space-2xl);
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  animation: scaleIn 0.5s var(--ease-out-expo) both;
+}
+
+/* Logo */
+.portal-login__logo {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.portal-login__logo-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--gradient-gold);
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  margin: 0 auto var(--space-lg);
+  box-shadow: var(--shadow-gold);
+}
+
+.portal-login__logo h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--royal-blue-dark);
+  margin-bottom: var(--space-xs);
+}
+
+.portal-login__logo p {
+  font-size: var(--text-sm);
+  color: var(--gray-400);
+}
+
+/* Error */
+.portal-login__error {
+  color: var(--error);
+  font-size: var(--text-sm);
+  text-align: center;
+  margin-top: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(198,40,40,0.08);
+  border-radius: var(--radius-md);
+  display: none;
+}
+
+.portal-login__error.show {
+  display: block;
+}
+
+/* Language toggle */
+.portal-login__lang {
+  text-align: center;
+  margin-top: var(--space-xl);
+  font-size: var(--text-sm);
+  color: var(--gray-400);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+}
+
+.portal-login__lang button {
+  color: var(--royal-blue);
+  font-weight: 600;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: var(--text-sm);
+  text-decoration: underline;
+  padding: var(--space-xs);
+}
+
+/* Back link */
+.portal-login__back {
+  display: block;
+  text-align: center;
+  margin-top: var(--space-lg);
+  font-size: var(--text-xs);
+  color: var(--gray-300);
+  text-decoration: none;
+  transition: color var(--duration-fast) ease;
+}
+
+.portal-login__back:hover {
+  color: var(--royal-blue);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .portal-page {
+    padding: var(--space-md);
+    align-items: flex-start;
+    padding-top: 10vh;
+  }
+
+  .portal-login__card {
+    padding: var(--space-2xl) var(--space-lg);
+    border-radius: var(--radius-lg);
+  }
+
+  .portal-login__logo-icon {
+    width: 64px;
+    height: 64px;
+    font-size: 32px;
+  }
+}

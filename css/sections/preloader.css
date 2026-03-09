@@ -1,0 +1,72 @@
+/* ── Preloader ── */
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-preloader);
+  background: var(--royal-blue-dark);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xl);
+  transition: opacity var(--duration-slow) ease, visibility var(--duration-slow) ease;
+  animation: preloaderForceHide 0.01s linear 7s forwards;
+}
+
+.preloader.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.preloader__logo {
+  font-family: 'Playfair Display', serif;
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.05em;
+  opacity: 0;
+  animation: fadeInUp 0.8s var(--ease-out-expo) 0.3s both;
+}
+
+.preloader__logo span { color: var(--gold); }
+
+.preloader__shutter {
+  width: 80px;
+  height: 80px;
+  border: 3px solid rgba(201,168,76,0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  opacity: 0;
+  animation: scaleIn 0.6s var(--ease-out-expo) 0.1s both;
+}
+
+.preloader__shutter::before {
+  content: '';
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--gold);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.preloader__tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  color: var(--gold-light);
+  font-size: var(--text-lg);
+  opacity: 0;
+  animation: fadeInUp 0.8s var(--ease-out-expo) 0.6s both;
+}
+
+@keyframes preloaderForceHide {
+  to {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}

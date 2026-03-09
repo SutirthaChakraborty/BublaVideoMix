@@ -1,0 +1,190 @@
+/* ── Video Showcase ── */
+.video-showcase {
+  background: var(--gradient-dark);
+  color: var(--white);
+}
+
+.video__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+  margin-top: var(--space-2xl);
+}
+
+.video-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--duration-normal) var(--ease-out-expo);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.video-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+  border-color: rgba(201,168,76,0.3);
+}
+
+/* Landscape videos (16:9) */
+.video-card--landscape .video-card__thumbnail {
+  aspect-ratio: 16/9;
+}
+
+/* Portrait videos (9:16) */
+.video-card--portrait .video-card__thumbnail {
+  aspect-ratio: 9/12;
+}
+
+.video-card__thumbnail {
+  position: relative;
+  overflow: hidden;
+  background: var(--royal-blue-dark);
+}
+
+.video-card__thumbnail img,
+.video-card__thumbnail video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--duration-normal) ease;
+}
+
+.video-card:hover .video-card__thumbnail video,
+.video-card:hover .video-card__thumbnail img {
+  transform: scale(1.05);
+}
+
+.video-card__play-btn {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15,38,73,0.3);
+  transition: background var(--duration-normal) ease;
+}
+
+.video-card:hover .video-card__play-btn { background: rgba(15,38,73,0.1); }
+
+.video-card__play-icon {
+  width: 60px; height: 60px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid rgba(255,255,255,0.4);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+  font-size: 22px;
+  padding-left: 4px;
+}
+
+.video-card:hover .video-card__play-icon {
+  background: var(--gold);
+  border-color: var(--gold);
+  transform: scale(1.1);
+}
+
+.video-card__duration {
+  position: absolute;
+  bottom: 8px; right: 10px;
+  background: rgba(0,0,0,0.7);
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 3px;
+}
+
+.video-card__info {
+  padding: var(--space-md) var(--space-lg);
+}
+
+.video-card__title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.video-card__category {
+  font-size: var(--text-xs);
+  color: var(--gold-light);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ── Video Modal ── */
+.video-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.97);
+  z-index: var(--z-modal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-normal) ease;
+}
+
+.video-modal.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.video-modal__player {
+  width: min(90vw, 900px);
+}
+
+/* Portrait video modal */
+.video-modal__player.portrait {
+  width: min(50vw, 400px);
+}
+
+.video-modal__video {
+  width: 100%;
+  border-radius: var(--radius-lg);
+  display: block;
+  max-height: 80vh;
+  background: #000;
+}
+
+.video-modal__close {
+  position: absolute;
+  top: 20px; right: 20px;
+  width: 48px; height: 48px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  font-size: 24px;
+  cursor: pointer;
+  transition: background var(--duration-fast) ease;
+  border: none;
+}
+
+.video-modal__close:hover { background: var(--error); }
+
+@media (max-width: 1024px) {
+  .video__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .video__grid { grid-template-columns: repeat(2, 1fr); }
+  .video-card--portrait .video-card__thumbnail {
+    aspect-ratio: 9/12;
+  }
+}
+
+@media (max-width: 480px) {
+  .video__grid { grid-template-columns: 1fr; }
+  .video-modal__player.portrait {
+    width: 90vw;
+  }
+}

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Bubla AI Portal — Photo Square</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500;600&family=Cormorant+Garamond:ital,wght@1,600&family=Noto+Serif+Bengali:wght@700&family=Noto+Sans+Bengali:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/portal/portal-login.css">
+  <link rel="stylesheet" href="css/portal/portal-dashboard.css">
+  <link rel="stylesheet" href="css/portal/portal-components.css">
+</head>
+<body>
+
+  <!-- LOGIN PAGE -->
+  <div class="portal-page" id="portalLogin">
+    <div class="portal-login__card">
+      <div class="portal-login__logo">
+        <div class="portal-login__logo-icon" aria-hidden="true">📷</div>
+        <h1 data-i18n="portal.login_title">Bubla AI Portal</h1>
+        <p data-i18n="portal.login_sub">Photo Enhancement Tools</p>
+      </div>
+
+      <div class="form-group">
+        <label for="portalId" data-i18n="portal.id_label">Login ID</label>
+        <input type="text" id="portalId" autocomplete="username" autocapitalize="none"
+               placeholder="Login ID" data-i18n-placeholder="portal.id_label">
+      </div>
+      <div class="form-group">
+        <label for="portalPassword" data-i18n="portal.password_label">Password</label>
+        <input type="password" id="portalPassword" autocomplete="current-password"
+               placeholder="Password" data-i18n-placeholder="portal.password_label">
+      </div>
+
+      <button class="btn btn--gold btn--full btn--lg" id="portalLoginBtn" data-i18n="portal.login_btn">
+        Enter Portal
+      </button>
+
+      <p class="portal-login__error" id="loginError">
+        ❌ <span data-i18n="portal.login_error">Invalid ID or password. Try again.</span>
+      </p>
+
+      <div class="portal-login__lang">
+        <span>Language:</span>
+        <button class="lang-toggle-btn" aria-label="Switch language">বাংলা</button>
+      </div>
+
+      <a href="index.html" class="portal-login__back">← Back to Website</a>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="portal-dashboard" id="portalDashboard">
+
+    <!-- Header -->
+    <header class="portal-header">
+      <div class="portal-header__brand">
+        <div class="portal-header__icon" aria-hidden="true">📷</div>
+        <span class="portal-header__title" data-i18n="portal.login_title">Bubla AI Portal</span>
+      </div>
+      <div class="portal-header__actions">
+        <button class="lang-toggle-btn portal-header__btn" aria-label="Switch language">EN | বাং</button>
+        <button id="apiSettingsBtn" class="portal-header__btn portal-header__btn--settings" title="API Settings" aria-label="API Settings">
+          ⚙️ <span data-i18n="portal.api_settings">API Key</span>
+        </button>
+        <a href="index.html" class="portal-header__btn">← Website</a>
+        <button id="portalLogoutBtn" class="portal-header__btn portal-header__btn--logout">Logout</button>
+      </div>
+    </header>
+
+    <!-- API Settings Modal -->
+    <div class="api-modal" id="apiModal" role="dialog" aria-modal="true" aria-labelledby="apiModalTitle" hidden>
+      <div class="api-modal__backdrop" id="apiModalBackdrop"></div>
+      <div class="api-modal__card">
+        <div class="api-modal__header">
+          <h2 class="api-modal__title" id="apiModalTitle">⚙️ <span data-i18n="portal.api_settings_title">Gemini API Settings</span></h2>
+          <button class="api-modal__close" id="apiModalClose" aria-label="Close">×</button>
+        </div>
+
+        <div class="api-modal__body">
+          <p class="api-modal__desc" data-i18n="portal.api_settings_desc">
+            A default API key is pre-configured. You can replace it with your own key from Google AI Studio.
+          </p>
+
+          <div class="api-modal__field">
+            <label for="apiKeyInput" data-i18n="portal.api_key_label">Gemini API Key</label>
+            <div class="api-modal__input-row">
+              <input
+                type="password"
+                id="apiKeyInput"
+                class="api-modal__input"
+                placeholder="AIzaSy..."
+                autocomplete="off"
+                spellcheck="false"
+              >
+              <button class="api-modal__reveal" id="apiKeyReveal" title="Show/Hide key" aria-label="Toggle key visibility">👁️</button>
+            </div>
+            <p class="api-modal__hint" id="apiKeyStatus"></p>
+          </div>
+
+          <div class="api-modal__info">
+            <strong data-i18n="portal.api_model_label">Model:</strong>
+            <code>gemini-2.0-flash-preview-image-generation</code>
+          </div>
+
+          <div class="api-modal__links">
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" data-i18n="portal.get_api_key">Get a free API key ↗</a>
+            <a href="https://ai.google.dev/gemini-api/docs/image-generation" target="_blank" rel="noopener" data-i18n="portal.api_docs">Gemini Docs ↗</a>
+          </div>
+        </div>
+
+        <div class="api-modal__footer">
+          <button class="btn btn--outline-blue" id="apiKeyReset" data-i18n="portal.api_key_reset">Reset to Default</button>
+          <button class="btn btn--gold" id="apiKeySave" data-i18n="portal.api_key_save">Save Key</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <main class="portal-content">
+
+      <!-- Step Indicator -->
+      <div class="portal-steps" id="portalSteps" role="list" aria-label="Process steps">
+        <div class="portal-step active" data-step="1" role="listitem">
+          <div class="portal-step__num">1</div>
+          <span class="portal-step__label" data-i18n="portal.upload_btn">Upload</span>
+        </div>
+        <div class="portal-step__connector"></div>
+        <div class="portal-step" data-step="2" role="listitem">
+          <div class="portal-step__num">2</div>
+          <span class="portal-step__label" data-i18n="portal.choose_step">Choose</span>
+        </div>
+        <div class="portal-step__connector"></div>
+        <div class="portal-step" data-step="3" role="listitem">
+          <div class="portal-step__num">3</div>
+          <span class="portal-step__label" data-i18n="portal.preview_step">Preview</span>
+        </div>
+        <div class="portal-step__connector"></div>
+        <div class="portal-step" data-step="4" role="listitem">
+          <div class="portal-step__num">4</div>
+          <span class="portal-step__label" data-i18n="portal.download_step">Download</span>
+        </div>
+      </div>
+
+      <!-- STEP 1: Upload -->
+      <section class="portal-section" id="sectionUpload" aria-label="Upload photo">
+        <div class="upload-zone" id="uploadZone" role="button" tabindex="0" aria-label="Click or drag to upload photo">
+          <div class="upload-zone__empty" id="uploadEmpty">
+            <div class="upload-zone__icon" aria-hidden="true">📤</div>
+            <p class="upload-zone__title" data-i18n="portal.upload_btn">Upload Photo</p>
+            <p class="upload-zone__sub">Click or drag &amp; drop · JPG, PNG, WebP · Max 20MB</p>
+          </div>
+          <div class="upload-zone__preview" id="uploadPreview">
+            <img src="" alt="Uploaded photo preview" id="previewImg">
+            <div class="upload-zone__change">
+              <span>📷</span> Change Photo
+            </div>
+          </div>
+        </div>
+        <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp,image/tiff"
+               style="display:none" aria-label="Choose photo file">
+      </section>
+
+      <!-- STEP 2: Tools -->
+      <section class="portal-section portal-section--locked" id="sectionTools" aria-label="Select AI enhancement tools">
+        <div class="portal-section__lock" id="toolsLock">
+          <span>☝️</span> <span data-i18n="portal.upload_first">Upload a photo first</span>
+        </div>
+        <h3 class="portal-section__heading" data-i18n="portal.dashboard_title">What would you like to do?</h3>
+
+        <div class="tools-grid" id="toolsGrid" role="group" aria-label="AI tool selection">
+          <!-- Rendered by prompt-builder.js -->
+        </div>
+
+        <div class="selected-tools" id="selectedTools" aria-live="polite"></div>
+
+        <!-- Face Preservation Toggle -->
+        <div class="face-preserve-row">
+          <label class="face-preserve-label" for="facePreserveToggle">
+            <input type="checkbox" id="facePreserveToggle" class="face-preserve-checkbox" checked>
+            <span class="face-preserve-track"></span>
+            <span class="face-preserve-text">
+              🛡️ <strong data-i18n="portal.face_preserve_label">Preserve Faces</strong>
+              <span class="face-preserve-desc" data-i18n="portal.face_preserve_desc">Keep all faces & people exactly as in original</span>
+            </span>
+          </label>
+        </div>
+
+        <!-- Optional custom instructions -->
+        <div class="custom-text-area">
+          <label for="customTextInput" class="custom-text-area__label">
+            💬 <span data-i18n="portal.custom_text_label">Additional Instructions</span>
+            <span class="custom-text-area__optional">(optional)</span>
+          </label>
+          <textarea
+            id="customTextInput"
+            class="custom-text-area__input"
+            rows="2"
+            placeholder="e.g. Make the background white, add warm lighting..."
+            data-i18n-placeholder="portal.custom_text_placeholder"
+          ></textarea>
+        </div>
+
+        <!-- Negative Prompt -->
+        <div class="custom-text-area">
+          <label for="negativePromptInput" class="custom-text-area__label custom-text-area__label--negative">
+            🚫 <span data-i18n="portal.negative_prompt_label">Negative Prompt</span>
+            <span class="custom-text-area__optional">(what to avoid)</span>
+          </label>
+          <textarea
+            id="negativePromptInput"
+            class="custom-text-area__input custom-text-area__input--negative"
+            rows="2"
+            placeholder="e.g. blur, noise, distorted face, extra fingers, watermark..."
+            data-i18n-placeholder="portal.negative_prompt_placeholder"
+          ></textarea>
+        </div>
+
+        <div class="portal-actions">
+          <button class="btn btn--primary btn--lg portal-actions__btn" id="generatePromptBtn" data-i18n="portal.generate_prompt">
+            ✨ Generate AI Prompt
+          </button>
+          <button class="btn btn--gold btn--lg portal-actions__btn" id="processBtn">
+            🚀 Process Photo
+          </button>
+        </div>
+
+        <!-- Generated Prompt -->
+        <div class="prompt-area" id="promptArea">
+          <p class="prompt-area__label">Generated Prompt</p>
+          <p class="prompt-area__text" id="generatedPrompt"></p>
+          <button class="prompt-area__copy" id="copyPromptBtn">📋 Copy</button>
+        </div>
+      </section>
+
+      <!-- Processing Overlay -->
+      <div class="processing-overlay" id="processingOverlay" role="status" aria-live="polite">
+        <div class="processing-overlay__content">
+          <div class="spinner spinner--gold"></div>
+          <p data-i18n="portal.processing">Processing your photo...</p>
+          <p class="processing-overlay__sub">This may take up to 30 seconds</p>
+        </div>
+      </div>
+
+      <!-- STEP 3 & 4: Result -->
+      <section class="portal-section portal-section--hidden" id="sectionResult" aria-label="Result">
+        <h3 class="portal-section__heading" data-i18n="portal.result_ready">✅ Your photo is ready!</h3>
+
+        <div class="result-comparison">
+          <div class="result-img-wrap">
+            <span class="result-img-wrap__label">Before</span>
+            <img src="" alt="Original photo" id="beforeImage">
+          </div>
+          <div class="result-img-wrap">
+            <span class="result-img-wrap__label">After</span>
+            <img src="" alt="Enhanced photo" id="resultImage">
+          </div>
+        </div>
+
+        <div class="result-actions">
+          <a class="btn btn--gold btn--lg" id="downloadBtn" download="photo-square-result.jpg">
+            ⬇️ <span data-i18n="portal.download">Download Result</span>
+          </a>
+          <button class="btn btn--outline-blue btn--lg" id="tryAgainBtn">
+            🔄 <span data-i18n="portal.try_again">Try Again</span>
+          </button>
+          <button class="btn btn--primary btn--lg" id="newPhotoBtn">
+            📷 <span data-i18n="portal.new_photo">New Photo</span>
+          </button>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Scripts -->
+  <script type="module">
+    import { initAuth }        from './js/portal/auth.js';
+    import { initDashboard }   from './js/portal/dashboard.js';
+    import { LanguageManager } from './js/modules/language.js';
+    import {
+      getActiveApiKey,
+      saveApiKey,
+      resetApiKey,
+      hasCustomApiKey,
+    } from './js/portal/api-handler.js';
+
+    // ES modules are deferred — DOM is already ready, no DOMContentLoaded needed
+    window.langManager = new LanguageManager();
+    initAuth();
+    initDashboard();
+
+    /* ── API Settings Modal ────────────────────────────────────── */
+    const apiModal        = document.getElementById('apiModal');
+    const apiSettingsBtn  = document.getElementById('apiSettingsBtn');
+    const apiModalClose   = document.getElementById('apiModalClose');
+    const apiModalBackdrop= document.getElementById('apiModalBackdrop');
+    const apiKeyInput     = document.getElementById('apiKeyInput');
+    const apiKeyReveal    = document.getElementById('apiKeyReveal');
+    const apiKeyStatus    = document.getElementById('apiKeyStatus');
+    const apiKeyReset     = document.getElementById('apiKeyReset');
+    const apiKeySave      = document.getElementById('apiKeySave');
+
+    function openApiModal() {
+      // Pre-fill with the user's saved custom key (or blank if using default)
+      apiKeyInput.value = hasCustomApiKey()
+        ? localStorage.getItem('ps-gemini-api-key')
+        : '';
+      apiKeyInput.type  = 'password';
+      apiKeyReveal.textContent = '👁️';
+      showStatus('', '');
+      apiModal.removeAttribute('hidden');
+      apiKeyInput.focus();
+    }
+
+    function closeApiModal() {
+      apiModal.setAttribute('hidden', '');
+      showStatus('', '');
+    }
+
+    function showStatus(msg, type) {
+      // type: 'success' | 'error' | '' (neutral/clear)
+      apiKeyStatus.textContent = msg;
+      apiKeyStatus.className = 'api-modal__hint'
+        + (type === 'success' ? ' api-modal__hint--success' : '')
+        + (type === 'error'   ? ' api-modal__hint--error'   : '');
+    }
+
+    apiSettingsBtn.addEventListener('click', openApiModal);
+    apiModalClose.addEventListener('click', closeApiModal);
+    apiModalBackdrop.addEventListener('click', closeApiModal);
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !apiModal.hasAttribute('hidden')) closeApiModal();
+    });
+
+    // Toggle show/hide the raw key
+    apiKeyReveal.addEventListener('click', () => {
+      const isHidden = apiKeyInput.type === 'password';
+      apiKeyInput.type = isHidden ? 'text' : 'password';
+      apiKeyReveal.textContent = isHidden ? '🙈' : '👁️';
+    });
+
+    // Save key
+    apiKeySave.addEventListener('click', () => {
+      const val = apiKeyInput.value.trim();
+      if (!val) {
+        showStatus('Please enter an API key, or click "Reset to Default".', 'error');
+        return;
+      }
+      if (!val.startsWith('AIza') || val.length < 35) {
+        showStatus('That doesn\'t look like a valid Gemini API key (should start with "AIza").', 'error');
+        return;
+      }
+      saveApiKey(val);
+      showStatus('✓ Custom API key saved.', 'success');
+      setTimeout(closeApiModal, 1200);
+    });
+
+    // Reset to default
+    apiKeyReset.addEventListener('click', () => {
+      resetApiKey();
+      apiKeyInput.value = '';
+      showStatus('✓ Reverted to the built-in default key.', 'success');
+      setTimeout(closeApiModal, 1200);
+    });
+  </script>
+
+</body>
+</html>

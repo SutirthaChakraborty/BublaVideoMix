@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Square — Premium Photography Studio | Maynaguri, West Bengal</title>
+  <meta name="description" content="Photo Square is Maynaguri's premier photography studio offering photo printing, restoration, videography, lamination, custom gifts, and passport photos. 5-star rated.">
+  <meta name="keywords" content="Photo Square, Maynaguri, photography studio, photo printing, photo restoration, videography, lamination, custom mugs, passport photos, West Bengal, ফটো স্কয়ার, ময়নাগুড়ি">
+  <meta name="author" content="Photo Square">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.photosquaremaynaguri.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Photo Square — Premium Photography Studio">
+  <meta property="og:description" content="Maynaguri's finest photography studio. Printing, restoration, videography & more.">
+  <meta property="og:image" content="https://www.photosquaremaynaguri.com/assets/images/og-image.jpg">
+  <meta property="og:url" content="https://www.photosquaremaynaguri.com/">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:locale:alternate" content="bn_IN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Photo Square — Premium Photography Studio">
+  <meta name="twitter:description" content="5-star rated studio in Maynaguri for all your photography needs.">
+  <meta name="twitter:image" content="https://www.photosquaremaynaguri.com/assets/images/og-image.jpg">
+
+  <!-- Geo -->
+  <meta name="geo.region" content="IN-WB">
+  <meta name="geo.placename" content="Maynaguri">
+  <meta name="geo.position" content="26.5644;88.8200">
+  <meta name="ICBM" content="26.5644, 88.8200">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,500;1,400;1,600&family=Noto+Serif+Bengali:wght@600;700&family=Noto+Sans+Bengali:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/typography.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/sections/preloader.css">
+  <link rel="stylesheet" href="css/sections/nav.css">
+  <link rel="stylesheet" href="css/sections/hero.css">
+  <link rel="stylesheet" href="css/sections/services.css">
+  <link rel="stylesheet" href="css/sections/portfolio.css">
+  <link rel="stylesheet" href="css/sections/video-showcase.css">
+  <link rel="stylesheet" href="css/sections/testimonials.css">
+  <link rel="stylesheet" href="css/sections/contact.css">
+  <link rel="stylesheet" href="css/sections/footer.css">
+  <link rel="stylesheet" href="css/sections/floating-cta.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1a3a6b">
+
+  <!-- Fallback: ensure content is visible even if JS modules fail (e.g. file:// protocol) -->
+  <style>
+    /* If modules don't load after 5s, force-show all content */
+    @keyframes forceShowContent {
+      to { opacity: 1 !important; transform: none !important; visibility: visible !important; }
+    }
+  </style>
+  <noscript>
+    <style>
+      .preloader { display: none !important; }
+      [data-animate] { opacity: 1 !important; transform: none !important; }
+    </style>
+  </noscript>
+
+  <!-- Schema Markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "PhotographyBusiness",
+    "name": "Photo Square",
+    "alternateName": "ফটো স্কয়ার",
+    "url": "https://www.photosquaremaynaguri.com",
+    "telephone": "+919832008268",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Old Market",
+      "addressLocality": "Maynaguri",
+      "addressRegion": "West Bengal",
+      "postalCode": "735224",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 26.5644,
+      "longitude": 88.8200
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "09:00",
+      "closes": "22:00"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "reviewCount": "17"
+    },
+    "priceRange": "₹₹",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Photography Services",
+      "itemListElement": [
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Photo Printing"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Photo Restoration"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Videography"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Lamination"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom Printing"}},
+        {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Passport Photos"}}
+      ]
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ── Preloader ─────────────────────────────────────── -->
+  <div class="preloader" id="preloader" role="status" aria-label="Loading Photo Square">
+    <div class="preloader__shutter"></div>
+    <div class="preloader__logo">Photo <span>Square</span></div>
+    <p class="preloader__tagline accent-text">Where Moments Become Masterpieces</p>
+  </div>
+
+  <!-- ── Navigation ────────────────────────────────────── -->
+  <nav class="nav" id="mainNav" aria-label="Main navigation">
+    <div class="nav__container">
+      <a href="#hero" class="nav__logo" aria-label="Photo Square Home">
+        <div class="nav__logo-icon">📷</div>
+        <span class="nav__logo-text">Photo Square</span>
+      </a>
+
+      <ul class="nav__links" role="list">
+        <li><a href="#hero"         class="nav__link active" data-i18n="nav.home">Home</a></li>
+        <li><a href="#services"     class="nav__link"        data-i18n="nav.services">Services</a></li>
+        <li><a href="#portfolio"    class="nav__link"        data-i18n="nav.portfolio">Portfolio</a></li>
+        <li><a href="#videos"       class="nav__link"        data-i18n="nav.videos">Videos</a></li>
+        <li><a href="#testimonials" class="nav__link"        data-i18n="nav.testimonials">Testimonials</a></li>
+        <li><a href="#contact"      class="nav__link"        data-i18n="nav.contact">Contact</a></li>
+      </ul>
+
+      <div class="nav__actions">
+        <button class="nav__lang-toggle" aria-label="Switch language">EN | বাং</button>
+        <button class="nav__menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation">
+    <a href="#hero"         class="mobile-menu__link" data-i18n="nav.home">Home</a>
+    <a href="#services"     class="mobile-menu__link" data-i18n="nav.services">Services</a>
+    <a href="#portfolio"    class="mobile-menu__link" data-i18n="nav.portfolio">Portfolio</a>
+    <a href="#videos"       class="mobile-menu__link" data-i18n="nav.videos">Videos</a>
+    <a href="#testimonials" class="mobile-menu__link" data-i18n="nav.testimonials">Testimonials</a>
+    <a href="#contact"      class="mobile-menu__link" data-i18n="nav.contact">Contact</a>
+  </div>
+
+  <main>
+
+    <!-- ── Hero ──────────────────────────────────────────── -->
+    <section id="hero" class="hero" aria-label="Hero">
+      <div class="hero__video-bg">
+        <video autoplay muted loop playsinline poster="" aria-hidden="true">
+          <source src="assets/videos/wedding/15157499-hd_1920_1080_25fps.mp4" type="video/mp4">
+        </video>
+        <!-- Gradient fallback -->
+        <div class="hero__video-fallback" style="width:100%;height:100%;background:linear-gradient(135deg,#0f2649 0%,#1a3a6b 40%,#2a5298 100%);position:absolute;inset:0;z-index:-1;"></div>
+      </div>
+      <div class="hero__overlay"></div>
+
+      <div class="hero__content">
+        <div class="hero__badge" data-i18n="hero.badge">EST. MAYNAGURI — NORTH BENGAL</div>
+        <h1 class="hero__title" data-i18n="hero.title">Photo Square</h1>
+        <p class="hero__tagline" data-i18n="hero.tagline">Where Moments Become Masterpieces</p>
+        <div class="hero__cta-group">
+          <a href="#portfolio" class="btn btn--gold btn--lg" data-i18n="hero.cta_primary">Explore Our Work</a>
+          <a href="#contact"   class="btn btn--outline btn--lg" data-i18n="hero.cta_secondary">Book a Session</a>
+        </div>
+      </div>
+
+      <div class="hero__frame-corner hero__frame-corner--tl" aria-hidden="true"></div>
+      <div class="hero__frame-corner hero__frame-corner--br" aria-hidden="true"></div>
+
+      <div class="hero__scroll-indicator" aria-hidden="true">
+        <div class="hero__scroll-dot"></div>
+        <div class="hero__scroll-dot"></div>
+        <div class="hero__scroll-dot"></div>
+      </div>
+    </section>
+
+    <!-- ── Services ──────────────────────────────────────── -->
+    <section id="services" class="section services">
+      <div class="container">
+        <header class="section-header" data-animate="fade-up">
+          <span class="section-header__overline label-text">What We Do</span>
+          <h2 class="section-header__title" data-i18n="services.section_title">Our Services</h2>
+          <p class="section-header__subtitle" data-i18n="services.section_subtitle">Crafting visual excellence for every occasion</p>
+        </header>
+
+        <div class="services__grid">
+
+          <article class="service-card" data-animate="fade-up" data-animate-delay="0">
+            <div class="service-card__icon-wrap" aria-hidden="true">🖨️</div>
+            <h3 class="service-card__title" data-i18n="services.printing.title">Photo Printing</h3>
+            <p class="service-card__desc"  data-i18n="services.printing.desc">Premium quality prints in all sizes with vibrant colors and archival paper.</p>
+            <a href="#contact" class="service-card__link">
+              <span data-i18n="services.learn_more">Learn More</span>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+          <article class="service-card" data-animate="fade-up" data-animate-delay="100">
+            <div class="service-card__icon-wrap" aria-hidden="true">✨</div>
+            <h3 class="service-card__title" data-i18n="services.restoration.title">Photo Restoration</h3>
+            <p class="service-card__desc"  data-i18n="services.restoration.desc">Breathe new life into old, damaged, or faded photographs with expert restoration.</p>
+            <a href="#contact" class="service-card__link">
+              <span data-i18n="services.learn_more">Learn More</span>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+          <article class="service-card" data-animate="fade-up" data-animate-delay="200">
+            <div class="service-card__icon-wrap" aria-hidden="true">🎥</div>
+            <h3 class="service-card__title" data-i18n="services.videography.title">Videography</h3>
+            <p class="service-card__desc"  data-i18n="services.videography.desc">Cinematic wedding and event videography that tells your story beautifully.</p>
+            <a href="#contact" class="service-card__link">
+              <span data-i18n="services.learn_more">Learn More</span>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+          <article class="service-card" data-animate="fade-up" data-animate-delay="0">
+            <div class="service-card__icon-wrap" aria-hidden="true">🛡️</div>
+            <h3 class="service-card__title" data-i18n="services.lamination.title">Lamination</h3>
+            <p class="service-card__desc"  data-i18n="services.lamination.desc">Protect and preserve your prints with professional-grade lamination.</p>
+            <a href="#contact" class="service-card__link">
+              <span data-i18n="services.learn_more">Learn More</span>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+          <article class="service-card" data-animate="fade-up" data-animate-delay="100">
+            <div class="service-card__icon-wrap" aria-hidden="true">🎁</div>
+            <h3 class="service-card__title" data-i18n="services.custom_printing.title">Custom Printing</h3>
+            <p class="service-card__desc"  data-i18n="services.custom_printing.desc">Personalized mugs, frames, gifts, and keepsakes with your photos.</p>
+            <a href="#contact" class="service-card__link">
+              <span data-i18n="services.learn_more">Learn More</span>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+          <article class="service-card" data-animate="fade-up" data-animate-delay="200">
+            <div class="service-card__icon-wrap" aria-hidden="true">🪪</div>
+            <h3 class="service-card__title" data-i18n="services.passport.title">Passport Photos</h3>
+            <p class="service-card__desc"  data-i18n="services.passport.desc">Quick, compliant passport and visa photos — ready in minutes.</p>
+            <a href="#contact" class="service-card__link">
+              <span data-i18n="services.learn_more">Learn More</span>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+          <article class="service-card" data-animate="fade-up" data-animate-delay="0">
+            <div class="service-card__icon-wrap" aria-hidden="true">🖌️</div>
+            <h3 class="service-card__title" data-i18n="services.photo_editing.title">Photo Editing</h3>
+            <p class="service-card__desc"  data-i18n="services.photo_editing.desc">Professional retouching, color correction, and creative editing.</p>
+            <a href="#contact" class="service-card__link">
+              <span data-i18n="services.learn_more">Learn More</span>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+          <article class="service-card" data-animate="fade-up" data-animate-delay="100">
+            <div class="service-card__icon-wrap" aria-hidden="true">🎬</div>
+            <h3 class="service-card__title" data-i18n="services.video_editing.title">Video Editing</h3>
+            <p class="service-card__desc"  data-i18n="services.video_editing.desc">Polish your videos with cuts, transitions, effects, and music.</p>
+            <a href="#contact" class="service-card__link">
+              <span data-i18n="services.learn_more">Learn More</span>
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Portfolio ──────────────────────────────────────── -->
+    <section id="portfolio" class="section portfolio">
+      <div class="container">
+        <header class="section-header" data-animate="fade-up">
+          <span class="section-header__overline label-text">Our Work</span>
+          <h2 class="section-header__title" data-i18n="portfolio.section_title">Our Portfolio</h2>
+          <p class="section-header__subtitle" data-i18n="portfolio.section_subtitle">A glimpse into our finest work</p>
+        </header>
+
+        <div class="portfolio__filters" role="group" aria-label="Filter portfolio">
+          <button class="filter-btn active" data-filter="all"         data-i18n="portfolio.filter_all">All</button>
+          <button class="filter-btn"        data-filter="printing"    data-i18n="portfolio.filter_printing">Printing</button>
+          <button class="filter-btn"        data-filter="restoration" data-i18n="portfolio.filter_restoration">Restoration</button>
+          <button class="filter-btn"        data-filter="lamination"  data-i18n="portfolio.filter_lamination">Lamination</button>
+          <button class="filter-btn"        data-filter="custom"      data-i18n="portfolio.filter_custom">Custom</button>
+        </div>
+
+        <div class="gallery__carousel" aria-label="Portfolio gallery">
+          <div class="gallery__track">
+            <div class="gallery__slide" data-category="printing">
+              <div class="gallery__frame">
+                <img src="assets/shop_photo/WhatsApp%20Image%202026-03-09%20at%2012.23.42%20PM%20%281%29.jpeg" alt="Photo Square printing work" loading="eager" width="400" height="300">
+              </div>
+              <span class="gallery__slide-label">Printing</span>
+            </div>
+            <div class="gallery__slide" data-category="lamination">
+              <div class="gallery__frame">
+                <img src="assets/shop_photo/WhatsApp%20Image%202026-03-09%20at%2012.23.42%20PM%20%282%29.jpeg" alt="Photo Square lamination work" loading="eager" width="400" height="300">
+              </div>
+              <span class="gallery__slide-label">Lamination</span>
+            </div>
+            <div class="gallery__slide" data-category="restoration">
+              <div class="gallery__frame">
+                <img src="assets/shop_photo/WhatsApp%20Image%202026-03-09%20at%2012.23.42%20PM.jpeg" alt="Photo Square restoration work" loading="eager" width="400" height="300">
+              </div>
+              <span class="gallery__slide-label">Restoration</span>
+            </div>
+            <div class="gallery__slide" data-category="custom">
+              <div class="gallery__frame">
+                <img src="assets/shop_photo/WhatsApp%20Image%202026-03-09%20at%2012.23.43%20PM%20%281%29.jpeg" alt="Photo Square custom work" loading="lazy" width="400" height="300">
+              </div>
+              <span class="gallery__slide-label">Custom</span>
+            </div>
+            <div class="gallery__slide" data-category="printing">
+              <div class="gallery__frame">
+                <img src="assets/shop_photo/WhatsApp%20Image%202026-03-09%20at%2012.23.43%20PM.jpeg" alt="Photo Square printing work" loading="lazy" width="400" height="300">
+              </div>
+              <span class="gallery__slide-label">Printing</span>
+            </div>
+            <div class="gallery__slide" data-category="lamination">
+              <div class="gallery__frame">
+                <img src="assets/shop_photo/WhatsApp%20Image%202026-03-09%20at%2012.23.44%20PM%20%281%29.jpeg" alt="Photo Square lamination work" loading="lazy" width="400" height="300">
+              </div>
+              <span class="gallery__slide-label">Lamination</span>
+            </div>
+            <div class="gallery__slide" data-category="restoration">
+              <div class="gallery__frame">
+                <img src="assets/shop_photo/WhatsApp%20Image%202026-03-09%20at%2012.23.44%20PM%20%282%29.jpeg" alt="Photo Square restoration work" loading="lazy" width="400" height="300">
+              </div>
+              <span class="gallery__slide-label">Restoration</span>
+            </div>
+            <div class="gallery__slide" data-category="printing">
+              <div class="gallery__frame">
+                <img src="assets/shop_photo/WhatsApp%20Image%202026-03-09%20at%2012.23.44%20PM.jpeg" alt="Photo Square printing work" loading="lazy" width="400" height="300">
+              </div>
+              <span class="gallery__slide-label">Printing</span>
+            </div>
+            <div class="gallery__slide" data-category="custom">
+              <div class="gallery__frame">
+                <img src="assets/shop_photo/WhatsApp%20Image%202026-03-09%20at%2012.23.45%20PM%20%281%29.jpeg" alt="Photo Square custom work" loading="lazy" width="400" height="300">
+              </div>
+              <span class="gallery__slide-label">Custom</span>
+            </div>
+            <div class="gallery__slide" data-category="lamination">
+              <div class="gallery__frame">
+                <img src="assets/shop_photo/WhatsApp%20Image%202026-03-09%20at%2012.23.45%20PM.jpeg" alt="Photo Square lamination work" loading="lazy" width="400" height="300">
+              </div>
+              <span class="gallery__slide-label">Lamination</span>
+            </div>
+            <div class="gallery__slide" data-category="printing">
+              <div class="gallery__frame">
+                <img src="assets/shop_photo/WhatsApp%20Image%202026-03-09%20at%2012.23.50%20PM%20%281%29.jpeg" alt="Photo Square printing work" loading="lazy" width="400" height="300">
+              </div>
+              <span class="gallery__slide-label">Printing</span>
+            </div>
+            <div class="gallery__slide" data-category="restoration">
+              <div class="gallery__frame">
+                <img src="assets/shop_photo/WhatsApp%20Image%202026-03-09%20at%2012.23.50%20PM.jpeg" alt="Photo Square restoration work" loading="lazy" width="400" height="300">
+              </div>
+              <span class="gallery__slide-label">Restoration</span>
+            </div>
+            <div class="gallery__slide" data-category="custom">
+              <div class="gallery__frame">
+                <img src="assets/shop_photo/WhatsApp%20Image%202026-03-09%20at%2012.23.51%20PM.jpeg" alt="Photo Square custom work" loading="lazy" width="400" height="300">
+              </div>
+              <span class="gallery__slide-label">Custom</span>
+            </div>
+          </div>
+
+          <!-- Carousel Controls -->
+          <button class="gallery__arrow gallery__arrow--prev" aria-label="Previous photos">‹</button>
+          <button class="gallery__arrow gallery__arrow--next" aria-label="Next photos">›</button>
+          <div class="gallery__dots" aria-label="Slide indicators"></div>
+        </div>
+      </div>
+
+      <!-- Lightbox -->
+      <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+        <img src="" alt="" class="lightbox__img">
+        <button class="lightbox__close" aria-label="Close viewer">✕</button>
+        <button class="lightbox__nav lightbox__prev" aria-label="Previous photo">‹</button>
+        <button class="lightbox__nav lightbox__next" aria-label="Next photo">›</button>
+        <p class="lightbox__caption"></p>
+      </div>
+    </section>
+
+    <!-- ── Video Showcase ─────────────────────────────────── -->
+    <section id="videos" class="section video-showcase">
+      <div class="container">
+        <header class="section-header" data-animate="fade-up">
+          <span class="section-header__overline label-text" style="color:var(--gold-light)">Watch</span>
+          <h2 class="section-header__title section-header__title--light" data-i18n="video_showcase.section_title">Video Showcase</h2>
+          <p class="section-header__subtitle section-header__subtitle--light" data-i18n="video_showcase.section_subtitle">Watch our cinematic productions</p>
+        </header>
+
+        <div class="video__grid">
+
+          <div class="video-card video-card--landscape" data-video-src="assets/videos/wedding/14921654_1920_1080_50fps.mp4" data-animate="fade-up" data-animate-delay="0">
+            <div class="video-card__thumbnail">
+              <video muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="assets/videos/wedding/14921654_1920_1080_50fps.mp4" type="video/mp4">
+              </video>
+              <div class="video-card__play-btn">
+                <div class="video-card__play-icon">▶</div>
+              </div>
+              <span class="video-card__duration">0:07</span>
+            </div>
+            <div class="video-card__info">
+              <h3 class="video-card__title">Wedding Ceremony</h3>
+              <p class="video-card__category">Wedding</p>
+            </div>
+          </div>
+
+          <div class="video-card video-card--portrait" data-video-src="assets/videos/photo_printing/photos-4340782-hd_1080_1920_25fps.mp4" data-animate="fade-up" data-animate-delay="100">
+            <div class="video-card__thumbnail">
+              <video muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="assets/videos/photo_printing/photos-4340782-hd_1080_1920_25fps.mp4" type="video/mp4">
+              </video>
+              <div class="video-card__play-btn">
+                <div class="video-card__play-icon">▶</div>
+              </div>
+              <span class="video-card__duration">0:15</span>
+            </div>
+            <div class="video-card__info">
+              <h3 class="video-card__title">Photo Printing Art</h3>
+              <p class="video-card__category">Printing</p>
+            </div>
+          </div>
+
+          <div class="video-card video-card--landscape" data-video-src="assets/videos/wedding/15157499-hd_1920_1080_25fps.mp4" data-animate="fade-up" data-animate-delay="200">
+            <div class="video-card__thumbnail">
+              <video muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="assets/videos/wedding/15157499-hd_1920_1080_25fps.mp4" type="video/mp4">
+              </video>
+              <div class="video-card__play-btn">
+                <div class="video-card__play-icon">▶</div>
+              </div>
+              <span class="video-card__duration">0:12</span>
+            </div>
+            <div class="video-card__info">
+              <h3 class="video-card__title">Wedding Highlights</h3>
+              <p class="video-card__category">Wedding</p>
+            </div>
+          </div>
+
+          <div class="video-card video-card--landscape" data-video-src="assets/videos/wedding/14921670_1920_1080_50fps.mp4" data-animate="fade-up" data-animate-delay="0">
+            <div class="video-card__thumbnail">
+              <video muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="assets/videos/wedding/14921670_1920_1080_50fps.mp4" type="video/mp4">
+              </video>
+              <div class="video-card__play-btn">
+                <div class="video-card__play-icon">▶</div>
+              </div>
+              <span class="video-card__duration">0:06</span>
+            </div>
+            <div class="video-card__info">
+              <h3 class="video-card__title">Wedding Moments</h3>
+              <p class="video-card__category">Wedding</p>
+            </div>
+          </div>
+
+          <div class="video-card video-card--portrait" data-video-src="assets/videos/photo_printing/photos-4973737-hd_1080_1920_25fps.mp4" data-animate="fade-up" data-animate-delay="100">
+            <div class="video-card__thumbnail">
+              <video muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="assets/videos/photo_printing/photos-4973737-hd_1080_1920_25fps.mp4" type="video/mp4">
+              </video>
+              <div class="video-card__play-btn">
+                <div class="video-card__play-icon">▶</div>
+              </div>
+              <span class="video-card__duration">0:12</span>
+            </div>
+            <div class="video-card__info">
+              <h3 class="video-card__title">Photo Gallery Reel</h3>
+              <p class="video-card__category">Printing</p>
+            </div>
+          </div>
+
+          <div class="video-card video-card--landscape" data-video-src="assets/videos/wedding/16004831-hd_1920_1080_25fps.mp4" data-animate="fade-up" data-animate-delay="200">
+            <div class="video-card__thumbnail">
+              <video muted loop playsinline preload="metadata" aria-hidden="true">
+                <source src="assets/videos/wedding/16004831-hd_1920_1080_25fps.mp4" type="video/mp4">
+              </video>
+              <div class="video-card__play-btn">
+                <div class="video-card__play-icon">▶</div>
+              </div>
+              <span class="video-card__duration">0:18</span>
+            </div>
+            <div class="video-card__info">
+              <h3 class="video-card__title">Wedding Celebration</h3>
+              <p class="video-card__category">Wedding</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Video Modal -->
+      <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Video player">
+        <div class="video-modal__player">
+          <video class="video-modal__video" controls playsinline></video>
+        </div>
+        <button class="video-modal__close" aria-label="Close video">✕</button>
+      </div>
+    </section>
+
+    <!-- ── Testimonials ───────────────────────────────────── -->
+    <section id="testimonials" class="section testimonials">
+      <div class="container">
+        <header class="section-header" data-animate="fade-up">
+          <span class="section-header__overline label-text">Reviews</span>
+          <h2 class="section-header__title" data-i18n="testimonials.section_title">What Our Customers Say</h2>
+          <p class="section-header__subtitle" data-i18n="testimonials.section_subtitle">Real stories from real people</p>
+        </header>
+      </div>
+
+      <div class="testimonials__carousel" aria-label="Customer testimonials">
+        <div class="testimonials__track">
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__quote-mark" aria-hidden="true">"</div>
+            <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__text">
+              "Amazing quality prints and wonderful service. Best photo studio in Maynaguri! The colors are so vibrant and the paper quality is excellent."
+            </blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">R</div>
+              <div>
+                <p class="testimonial-card__name">Rahul M.</p>
+                <p class="testimonial-card__service">Photo Printing</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__quote-mark" aria-hidden="true">"</div>
+            <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__text">
+              "আমার বাবার পুরনো ছবি অসাধারণভাবে রিস্টোর করে দিয়েছেন। অনেক ধন্যবাদ। পুরো পরিবার খুব খুশি হয়েছে।"
+            </blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">S</div>
+              <div>
+                <p class="testimonial-card__name">Sunita D.</p>
+                <p class="testimonial-card__service">Photo Restoration</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__quote-mark" aria-hidden="true">"</div>
+            <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__text">
+              "They filmed our entire wedding ceremony beautifully. The highlight reel made us cry! Professional team, reasonable pricing."
+            </blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">P</div>
+              <div>
+                <p class="testimonial-card__name">Priya &amp; Amit</p>
+                <p class="testimonial-card__service">Videography</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__quote-mark" aria-hidden="true">"</div>
+            <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__text">
+              "Passport photos done in 5 minutes. Very professional and the quality was perfect for my visa application. Highly recommended!"
+            </blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">K</div>
+              <div>
+                <p class="testimonial-card__name">Karim A.</p>
+                <p class="testimonial-card__service">Passport Photos</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__quote-mark" aria-hidden="true">"</div>
+            <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__text">
+              "কাস্টম মগ বানিয়ে দিয়েছেন আমার মায়ের জন্মদিনে। ছবির মান অসাধারণ! উপহার হিসেবে দারুণ আইডিয়া।"
+            </blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">T</div>
+              <div>
+                <p class="testimonial-card__name">Tanmoy B.</p>
+                <p class="testimonial-card__service">Custom Printing</p>
+              </div>
+            </div>
+          </article>
+
+          <article class="testimonial-card">
+            <div class="testimonial-card__quote-mark" aria-hidden="true">"</div>
+            <div class="testimonial-card__stars" aria-label="5 stars">★★★★★</div>
+            <blockquote class="testimonial-card__text">
+              "The lamination work is top-notch. My certificates now look and feel premium. Fast service, great pricing, friendly staff!"
+            </blockquote>
+            <div class="testimonial-card__author">
+              <div class="testimonial-card__avatar" aria-hidden="true">M</div>
+              <div>
+                <p class="testimonial-card__name">Mohan R.</p>
+                <p class="testimonial-card__service">Lamination</p>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Contact ────────────────────────────────────────── -->
+    <section id="contact" class="section contact">
+      <div class="container">
+        <header class="section-header" data-animate="fade-up">
+          <span class="section-header__overline label-text">Reach Us</span>
+          <h2 class="section-header__title" data-i18n="contact.section_title">Get In Touch</h2>
+          <p class="section-header__subtitle" data-i18n="contact.section_subtitle">Visit us or send a message</p>
+        </header>
+
+        <div class="contact__layout">
+
+          <!-- Form -->
+          <div class="contact__form-wrap" data-animate="fade-right">
+            <h3>Send a Message</h3>
+            <form class="contact-form" id="contactForm" novalidate>
+              <div class="form-group">
+                <label for="name" data-i18n="contact.name">Your Name</label>
+                <input type="text" id="name" name="name" required autocomplete="name"
+                       data-i18n-placeholder="contact.name" placeholder="Your Name">
+                <span class="error-msg">Please enter your name.</span>
+              </div>
+              <div class="form-group">
+                <label for="phone" data-i18n="contact.phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}"
+                       autocomplete="tel" data-i18n-placeholder="contact.phone" placeholder="Phone Number">
+                <span class="error-msg">Enter a valid 10-digit number.</span>
+              </div>
+              <div class="form-group">
+                <label for="service" data-i18n="contact.service">Select Service</label>
+                <select id="service" name="service" required>
+                  <option value="">-- Select --</option>
+                  <option value="Photo Printing">Photo Printing</option>
+                  <option value="Photo Restoration">Photo Restoration</option>
+                  <option value="Videography">Videography</option>
+                  <option value="Lamination">Lamination</option>
+                  <option value="Custom Printing">Custom Printing</option>
+                  <option value="Passport Photos">Passport Photos</option>
+                  <option value="Photo Editing">Photo Editing</option>
+                  <option value="Video Editing">Video Editing</option>
+                </select>
+                <span class="error-msg">Please select a service.</span>
+              </div>
+              <div class="form-group">
+                <label for="message" data-i18n="contact.message">Your Message</label>
+                <textarea id="message" name="message" rows="4"
+                          data-i18n-placeholder="contact.message" placeholder="Your Message"></textarea>
+              </div>
+              <button type="submit" class="btn btn--gold btn--full btn--lg" data-i18n="contact.submit">
+                📱 Send via WhatsApp
+              </button>
+            </form>
+            <div class="contact__success" aria-live="polite">
+              <div class="contact__success-icon">✅</div>
+              <h4>Message sent!</h4>
+              <p>Opening WhatsApp with your message. We'll reply soon!</p>
+            </div>
+          </div>
+
+          <!-- Map & Info -->
+          <div class="contact__map-wrap" data-animate="fade-left">
+            <h3>Find Us</h3>
+            <div class="contact__map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3572.0!2d88.8200!3d26.5644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjbCsDMzJzUxLjgiTiA4OMKwNDknMTIuMCJF!5e0!3m2!1sen!2sin!4v1"
+                width="100%"
+                height="320"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Photo Square location on Google Maps"
+                aria-label="Map showing Photo Square location">
+              </iframe>
+            </div>
+
+            <div class="contact__info" role="list">
+              <div class="contact__info-item" role="listitem">
+                <div class="contact__info-icon" aria-hidden="true">📍</div>
+                <div>
+                  <p class="contact__info-label">Address</p>
+                  <p class="contact__info-value" data-i18n="contact.address">Old Market, Maynaguri, West Bengal 735224</p>
+                  <small style="color:var(--gray-400);font-size:var(--text-xs)">Plus Code: HR7C+XV</small>
+                </div>
+              </div>
+              <div class="contact__info-item" role="listitem">
+                <div class="contact__info-icon" aria-hidden="true">📞</div>
+                <div>
+                  <p class="contact__info-label">Phone</p>
+                  <p class="contact__info-value">
+                    <a href="tel:+919832008268">098320 08268</a>
+                  </p>
+                </div>
+              </div>
+              <div class="contact__info-item" role="listitem">
+                <div class="contact__info-icon" aria-hidden="true">🕐</div>
+                <div>
+                  <p class="contact__info-label">Hours</p>
+                  <p class="contact__info-value" data-i18n="contact.hours">Open · Closes 10 PM</p>
+                </div>
+              </div>
+              <div class="contact__info-item" role="listitem">
+                <div class="contact__info-icon" aria-hidden="true">⭐</div>
+                <div>
+                  <p class="contact__info-label">Rating</p>
+                  <div class="contact__rating">
+                    <span class="stars" aria-label="5 star rating">★★★★★</span>
+                    <span class="contact__info-value">5.0 (17 reviews)</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────── -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <div class="footer__brand-logo">
+            <div class="footer__brand-logo-icon" aria-hidden="true">📷</div>
+            Photo Square
+          </div>
+          <p class="footer__tagline" data-i18n="footer.tagline">Maynaguri's Premier Photography Studio</p>
+          <div class="footer__rating" aria-label="5 star rating with 17 reviews">
+            <span class="stars">★★★★★</span>
+            <span>5.0 · 17 reviews</span>
+          </div>
+        </div>
+
+        <div class="footer__col">
+          <h4>Quick Links</h4>
+          <ul class="footer__links" role="list">
+            <li><a href="#hero" data-i18n="nav.home">Home</a></li>
+            <li><a href="#services" data-i18n="nav.services">Services</a></li>
+            <li><a href="#portfolio" data-i18n="nav.portfolio">Portfolio</a></li>
+            <li><a href="#videos" data-i18n="nav.videos">Videos</a></li>
+            <li><a href="#testimonials" data-i18n="nav.testimonials">Testimonials</a></li>
+            <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Services</h4>
+          <ul class="footer__links" role="list">
+            <li><a href="#contact">Photo Printing</a></li>
+            <li><a href="#contact">Photo Restoration</a></li>
+            <li><a href="#contact">Videography</a></li>
+            <li><a href="#contact">Lamination</a></li>
+            <li><a href="#contact">Custom Printing</a></li>
+            <li><a href="#contact">Passport Photos</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <div class="footer__contact-item">
+            <span aria-hidden="true">📍</span>
+            <span>Old Market, Maynaguri<br>West Bengal 735224</span>
+          </div>
+          <div class="footer__contact-item">
+            <span aria-hidden="true">📞</span>
+            <span><a href="tel:+919832008268" style="color:var(--gold-light)">098320 08268</a></span>
+          </div>
+          <div class="footer__contact-item">
+            <span aria-hidden="true">🕐</span>
+            <span>Open daily · Closes 10 PM</span>
+          </div>
+          <div class="footer__contact-item">
+            <span aria-hidden="true">🔑</span>
+            <span><a href="portal.html" style="color:var(--gold-light)">Bubla AI Portal</a></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__divider"></div>
+
+    <div class="container">
+      <div class="footer__bottom">
+        <p data-i18n="footer.copyright">© 2025 Photo Square. All Rights Reserved.</p>
+        <p>Crafted with ❤️ in Maynaguri</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Floating CTA ───────────────────────────────────── -->
+  <div class="floating-cta" id="floatingCta" aria-label="Quick contact options">
+    <a href="https://maps.google.com/?q=Photo+Square+Old+Market+Maynaguri+West+Bengal"
+       class="floating-cta__btn floating-cta__btn--maps"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Get directions to Photo Square">
+      📍
+      <span>Directions</span>
+    </a>
+    <a href="tel:+919832008268"
+       class="floating-cta__btn floating-cta__btn--call"
+       aria-label="Call Photo Square">
+      📞
+      <span>Call Now</span>
+    </a>
+    <a href="https://wa.me/919832008268?text=Hi%20Photo%20Square!%20I%20would%20like%20to%20inquire%20about%20your%20services."
+       class="floating-cta__btn floating-cta__btn--whatsapp"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="WhatsApp Photo Square">
+      💬
+      <span>WhatsApp</span>
+    </a>
+  </div>
+
+  <!-- ── Mobile Bottom Bar ─────────────────────────────── -->
+  <div class="mobile-bottom-bar" id="mobileBottomBar" role="navigation" aria-label="Mobile quick actions">
+    <a href="tel:+919832008268" aria-label="Call us">
+      <span class="icon" aria-hidden="true">📞</span>
+      <span>Call</span>
+    </a>
+    <a href="https://wa.me/919832008268?text=Hi%20Photo%20Square!" target="_blank" rel="noopener" class="whatsapp" aria-label="WhatsApp us">
+      <span class="icon" aria-hidden="true">💬</span>
+      <span>WhatsApp</span>
+    </a>
+    <a href="https://maps.google.com/?q=Photo+Square+Maynaguri" target="_blank" rel="noopener" aria-label="Get directions">
+      <span class="icon" aria-hidden="true">📍</span>
+      <span>Directions</span>
+    </a>
+  </div>
+
+  <!-- ── Scripts ────────────────────────────────────────── -->
+  <script type="module" src="js/app.js"></script>
+
+  <!-- Fallback: if ES modules fail (file:// protocol), force-show content -->
+  <script>
+    (function() {
+      // Set a timer — if app.js hasn't initialized after 5s, force show content
+      var fallbackTimer = setTimeout(function() {
+        // Hide preloader
+        var preloader = document.querySelector('.preloader');
+        if (preloader) { preloader.style.opacity = '0'; preloader.style.visibility = 'hidden'; preloader.style.pointerEvents = 'none'; }
+        // Show all animated elements
+        var items = document.querySelectorAll('[data-animate]');
+        for (var i = 0; i < items.length; i++) {
+          items[i].style.opacity = '1';
+          items[i].style.transform = 'none';
+          items[i].classList.add('animated');
+        }
+        console.warn('⚠️ Photo Square: ES modules may not have loaded. Showing content via fallback.');
+      }, 5000);
+      // If module loads successfully, it will clear this timer
+      window.__psModuleLoaded = function() { clearTimeout(fallbackTimer); };
+    })();
+  </script>
+
+</body>
+</html>

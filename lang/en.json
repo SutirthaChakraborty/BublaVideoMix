@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "portfolio": "Portfolio",
+    "videos": "Videos",
+    "testimonials": "Testimonials",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "EST. MAYNAGURI — NORTH BENGAL",
+    "title": "Photo Square",
+    "tagline": "Where Moments Become Masterpieces",
+    "cta_primary": "Explore Our Work",
+    "cta_secondary": "Book a Session"
+  },
+  "services": {
+    "section_title": "Our Services",
+    "section_subtitle": "Crafting visual excellence for every occasion",
+    "learn_more": "Learn More",
+    "printing": {
+      "title": "Photo Printing",
+      "desc": "Premium quality prints in all sizes with vibrant colors and archival paper."
+    },
+    "restoration": {
+      "title": "Photo Restoration",
+      "desc": "Breathe new life into old, damaged, or faded photographs with expert restoration."
+    },
+    "videography": {
+      "title": "Videography",
+      "desc": "Cinematic wedding and event videography that tells your story beautifully."
+    },
+    "lamination": {
+      "title": "Lamination",
+      "desc": "Protect and preserve your prints with professional-grade lamination."
+    },
+    "custom_printing": {
+      "title": "Custom Printing",
+      "desc": "Personalized mugs, frames, gifts, and keepsakes with your photos."
+    },
+    "passport": {
+      "title": "Passport Photos",
+      "desc": "Quick, compliant passport and visa photos — ready in minutes."
+    },
+    "photo_editing": {
+      "title": "Photo Editing",
+      "desc": "Professional retouching, color correction, and creative editing."
+    },
+    "video_editing": {
+      "title": "Video Editing",
+      "desc": "Polish your videos with cuts, transitions, effects, and music."
+    }
+  },
+  "portfolio": {
+    "section_title": "Our Portfolio",
+    "section_subtitle": "A glimpse into our finest work",
+    "filter_all": "All",
+    "filter_printing": "Printing",
+    "filter_restoration": "Restoration",
+    "filter_videography": "Videography",
+    "filter_custom": "Custom",
+    "filter_lamination": "Lamination"
+  },
+  "video_showcase": {
+    "section_title": "Video Showcase",
+    "section_subtitle": "Watch our cinematic productions"
+  },
+  "testimonials": {
+    "section_title": "What Our Customers Say",
+    "section_subtitle": "Real stories from real people"
+  },
+  "contact": {
+    "section_title": "Get In Touch",
+    "section_subtitle": "Visit us or send a message",
+    "name": "Your Name",
+    "phone": "Phone Number",
+    "service": "Select Service",
+    "message": "Your Message",
+    "submit": "Send via WhatsApp",
+    "address": "Old Market, Maynaguri, West Bengal 735224",
+    "hours": "Open · Closes 10 PM"
+  },
+  "footer": {
+    "copyright": "© 2025 Photo Square. All Rights Reserved.",
+    "tagline": "Maynaguri's Premier Photography Studio"
+  },
+  "portal": {
+    "login_title": "Bubla AI Portal",
+    "login_sub": "Photo Enhancement Tools",
+    "id_label": "Login ID",
+    "password_label": "Password",
+    "login_btn": "Enter Portal",
+    "dashboard_title": "What would you like to do?",
+    "upload_btn": "Upload Photo",
+    "choose_step": "Choose Tools",
+    "preview_step": "Preview Result",
+    "download_step": "Download",
+    "tools": {
+      "remove_bg": "Remove BG",
+      "restore": "Restore Photo",
+      "enhance": "Enhance Quality",
+      "cinematic": "Cinematic Portrait",
+      "colorize": "Colorize B&W",
+      "super_res": "Super Resolution",
+      "face_enhance": "Face Enhancement",
+      "skin_retouch": "Skin Retouch",
+      "lighting": "Lighting Fix",
+      "artistic": "Artistic Portrait"
+    },
+    "generate_prompt": "Generate AI Prompt",
+    "processing": "Processing your photo...",
+    "result_ready": "Your photo is ready!",
+    "download": "Download Result",
+    "try_again": "Try Again",
+    "new_photo": "New Photo",
+    "login_error": "Invalid ID or password. Try again.",
+    "language_label": "Language:",
+    "back_to_site": "Back to Website",
+    "logout": "Logout",
+    "upload_first": "Upload a photo first",
+    "process": "Process Photo",
+    "generated_prompt_label": "Generated Prompt",
+    "change_photo": "Change Photo",
+    "copy": "Copy",
+    "custom_text_label": "Additional Instructions",
+    "custom_text_placeholder": "e.g. Make the background white, add warm lighting, keep the face sharp...",
+    "face_preserve_label": "Preserve Faces",
+    "face_preserve_desc": "Keep all faces & people exactly as in original",
+    "negative_prompt_label": "Negative Prompt",
+    "negative_prompt_placeholder": "e.g. blur, noise, distorted face, extra fingers, watermark...",
+    "api_settings": "API Key",
+    "api_settings_title": "Gemini API Settings",
+    "api_settings_desc": "A default API key is pre-configured. You can replace it with your own key from Google AI Studio.",
+    "api_key_label": "Gemini API Key",
+    "api_model_label": "Model:",
+    "get_api_key": "Get a free API key ↗",
+    "api_docs": "Gemini Docs ↗",
+    "api_key_reset": "Reset to Default",
+    "api_key_save": "Save Key"
+  }
+}

@@ -1,0 +1,44 @@
+/* ============================================================
+   PHOTO SQUARE — Responsive Media Queries
+   ============================================================ */
+
+/* ── Breakpoints: 1200, 1024, 768, 480 ── */
+
+@media (max-width: 1024px) {
+  .grid--3 { grid-template-columns: repeat(2, 1fr); }
+  .grid--4 { grid-template-columns: repeat(2, 1fr); }
+
+  .nav__links { display: none; }
+  .nav__menu-toggle { display: flex; }
+
+  .hero__title { font-size: clamp(2.5rem, 6vw, 4rem); }
+  .contact__layout { grid-template-columns: 1fr; }
+
+  .footer__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .grid--2,
+  .grid--3,
+  .grid--4 { grid-template-columns: 1fr; }
+
+  .hero__cta-group { flex-direction: column; align-items: center; }
+  .hero__cta-group .btn { width: 100%; max-width: 300px; }
+
+  .services__grid { grid-template-columns: repeat(2, 1fr); }
+  .video__grid    { grid-template-columns: repeat(2, 1fr); }
+
+  .footer__grid { grid-template-columns: 1fr; gap: var(--space-xl); }
+
+  .testimonials__track { gap: var(--space-md); }
+}
+
+@media (max-width: 480px) {
+  .services__grid { grid-template-columns: 1fr; }
+
+  .section-header__title { font-size: var(--text-2xl); }
+
+  .hero__badge { font-size: var(--text-xs); }
+
+  .nav { --nav-height: 60px; }
+}

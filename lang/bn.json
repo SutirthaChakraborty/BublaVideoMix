@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "home": "হোম",
+    "services": "সেবা",
+    "portfolio": "পোর্টফোলিও",
+    "videos": "ভিডিও",
+    "testimonials": "গ্রাহকের মতামত",
+    "contact": "যোগাযোগ"
+  },
+  "hero": {
+    "badge": "প্রতিষ্ঠিত — ময়নাগুড়ি, উত্তরবঙ্গ",
+    "title": "ফটো স্কয়ার",
+    "tagline": "যেখানে মুহূর্ত হয়ে ওঠে শিল্প",
+    "cta_primary": "আমাদের কাজ দেখুন",
+    "cta_secondary": "সেশন বুক করুন"
+  },
+  "services": {
+    "section_title": "আমাদের সেবাসমূহ",
+    "section_subtitle": "প্রতিটি অনুষ্ঠানের জন্য সেরা মানের কাজ",
+    "learn_more": "আরও জানুন",
+    "printing": {
+      "title": "ফটো প্রিন্টিং",
+      "desc": "উজ্জ্বল রঙ ও আর্কাইভাল কাগজে সব মাপের প্রিমিয়াম প্রিন্ট।"
+    },
+    "restoration": {
+      "title": "ফটো রিস্টোরেশন",
+      "desc": "পুরনো, নষ্ট বা ফ্যাকাশে ছবিতে নতুন প্রাণ দিন।"
+    },
+    "videography": {
+      "title": "ভিডিওগ্রাফি",
+      "desc": "সিনেমাটিক বিবাহ ও ইভেন্ট ভিডিওগ্রাফি।"
+    },
+    "lamination": {
+      "title": "ল্যামিনেশন",
+      "desc": "পেশাদার মানের ল্যামিনেশনে আপনার প্রিন্ট সুরক্ষিত করুন।"
+    },
+    "custom_printing": {
+      "title": "কাস্টম প্রিন্টিং",
+      "desc": "আপনার ছবি দিয়ে মগ, ফ্রেম, গিফট তৈরি করুন।"
+    },
+    "passport": {
+      "title": "পাসপোর্ট ফটো",
+      "desc": "দ্রুত, নিয়ম-মাফিক পাসপোর্ট ও ভিসা ফটো — মিনিটেই তৈরি।"
+    },
+    "photo_editing": {
+      "title": "ফটো এডিটিং",
+      "desc": "প্রফেশনাল রিটাচিং, কালার কারেকশন ও ক্রিয়েটিভ এডিটিং।"
+    },
+    "video_editing": {
+      "title": "ভিডিও এডিটিং",
+      "desc": "কাট, ট্রানজিশন, ইফেক্ট ও মিউজিক দিয়ে ভিডিও পলিশ করুন।"
+    }
+  },
+  "portfolio": {
+    "section_title": "আমাদের পোর্টফোলিও",
+    "section_subtitle": "আমাদের সেরা কাজের ঝলক",
+    "filter_all": "সব",
+    "filter_printing": "প্রিন্টিং",
+    "filter_restoration": "রিস্টোরেশন",
+    "filter_videography": "ভিডিওগ্রাফি",
+    "filter_custom": "কাস্টম",
+    "filter_lamination": "ল্যামিনেশন"
+  },
+  "video_showcase": {
+    "section_title": "ভিডিও শোকেস",
+    "section_subtitle": "আমাদের সিনেমাটিক প্রোডাকশন দেখুন"
+  },
+  "testimonials": {
+    "section_title": "গ্রাহকেরা কী বলেন",
+    "section_subtitle": "সত্যিকারের মানুষের সত্যিকারের গল্প"
+  },
+  "contact": {
+    "section_title": "যোগাযোগ করুন",
+    "section_subtitle": "আমাদের দোকানে আসুন বা মেসেজ পাঠান",
+    "name": "আপনার নাম",
+    "phone": "ফোন নম্বর",
+    "service": "সেবা নির্বাচন করুন",
+    "message": "আপনার বার্তা",
+    "submit": "হোয়াটসঅ্যাপে পাঠান",
+    "address": "ওল্ড মার্কেট, ময়নাগুড়ি, পশ্চিমবঙ্গ ৭৩৫২২৪",
+    "hours": "খোলা আছে · রাত ১০টায় বন্ধ"
+  },
+  "footer": {
+    "copyright": "© ২০২৫ ফটো স্কয়ার। সর্বস্বত্ব সংরক্ষিত।",
+    "tagline": "ময়নাগুড়ির সেরা ফটোগ্রাফি স্টুডিও"
+  },
+  "portal": {
+    "login_title": "বুবলা AI পোর্টাল",
+    "login_sub": "ফটো এনহান্সমেন্ট টুলস",
+    "id_label": "লগইন আইডি",
+    "password_label": "পাসওয়ার্ড",
+    "login_btn": "পোর্টালে ঢুকুন",
+    "dashboard_title": "আপনি কী করতে চান?",
+    "upload_btn": "ছবি আপলোড করুন",
+    "choose_step": "টুল বাছুন",
+    "preview_step": "ফলাফল দেখুন",
+    "download_step": "ডাউনলোড",
+    "tools": {
+      "remove_bg": "ব্যাকগ্রাউন্ড সরান",
+      "restore": "ছবি ঠিক করুন",
+      "enhance": "কোয়ালিটি বাড়ান",
+      "cinematic": "সিনেমাটিক",
+      "colorize": "রঙিন করুন",
+      "super_res": "সুপার রেজ",
+      "face_enhance": "মুখ উন্নত করুন",
+      "skin_retouch": "ত্বক মসৃণ করুন",
+      "lighting": "আলো ঠিক করুন",
+      "artistic": "আর্টিস্টিক"
+    },
+    "generate_prompt": "AI প্রম্পট তৈরি করুন",
+    "processing": "আপনার ছবি প্রসেস হচ্ছে...",
+    "result_ready": "আপনার ছবি তৈরি!",
+    "download": "ফলাফল ডাউনলোড করুন",
+    "try_again": "আবার চেষ্টা করুন",
+    "new_photo": "নতুন ছবি",
+    "login_error": "আইডি বা পাসওয়ার্ড ভুল। আবার চেষ্টা করুন।",
+    "language_label": "ভাষা:",
+    "back_to_site": "ওয়েবসাইটে ফিরুন",
+    "logout": "লগআউট",
+    "upload_first": "আগে একটি ছবি আপলোড করুন",
+    "process": "ছবি প্রসেস করুন",
+    "generated_prompt_label": "তৈরি প্রম্পট",
+    "change_photo": "ছবি পরিবর্তন করুন",
+    "copy": "কপি",
+    "custom_text_label": "অতিরিক্ত নির্দেশনা",
+    "custom_text_placeholder": "যেমন: পটভূমি সাদা করুন, উষ্ণ আলো যোগ করুন, মুখ পরিষ্কার রাখুন...",
+    "face_preserve_label": "মুখ সংরক্ষণ করুন",
+    "face_preserve_desc": "সকল মুখ ও মানুষ হুবহু মূল ছবির মতো রাখুন",
+    "negative_prompt_label": "নেগেটিভ প্রম্পট",
+    "negative_prompt_placeholder": "যেমন: ঝাপসা, গোলমাল, বিকৃত মুখ, জলছাপ...",
+    "api_settings": "API কী",
+    "api_settings_title": "জেমিনি API সেটিংস",
+    "api_settings_desc": "একটি ডিফল্ট API কী আগে থেকেই সেট করা আছে। আপনি চাইলে Google AI Studio থেকে নিজের কী দিয়ে বদলাতে পারেন।",
+    "api_key_label": "জেমিনি API কী",
+    "api_model_label": "মডেল:",
+    "get_api_key": "বিনামূল্যে API কী পান ↗",
+    "api_docs": "জেমিনি ডকস ↗",
+    "api_key_reset": "ডিফল্টে ফিরুন",
+    "api_key_save": "কী সংরক্ষণ করুন"
+  }
+}

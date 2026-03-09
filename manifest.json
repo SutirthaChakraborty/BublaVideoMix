@@ -1,0 +1,12 @@
+{
+  "name": "Photo Square",
+  "short_name": "Photo Square",
+  "description": "Maynaguri's Premier Photography Studio",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0f2649",
+  "theme_color": "#1a3a6b",
+  "icons": [
+    { "src": "favicon.ico", "sizes": "48x48", "type": "image/x-icon" }
+  ]
+}

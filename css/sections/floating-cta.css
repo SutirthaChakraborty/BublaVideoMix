@@ -1,0 +1,106 @@
+/* ── Floating CTA Buttons — Always Visible ── */
+.floating-cta {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: var(--z-floating);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.floating-cta__btn {
+  position: relative;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+  font-size: 22px;
+  text-decoration: none;
+  color: var(--white);
+}
+
+.floating-cta__btn:hover { transform: scale(1.15); }
+
+.floating-cta__btn--call {
+  background: #34A853;
+  animation: floatPulse 3s ease-in-out infinite;
+}
+.floating-cta__btn--whatsapp {
+  background: #25D366;
+  animation: floatPulse 3s ease-in-out 0.3s infinite;
+}
+.floating-cta__btn--maps {
+  background: #4285F4;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  opacity: 0.85;
+}
+.floating-cta__btn--maps:hover { opacity: 1; }
+
+.floating-cta__btn span {
+  position: absolute;
+  right: calc(100% + 12px);
+  white-space: nowrap;
+  background: rgba(0,0,0,0.8);
+  color: var(--white);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.floating-cta__btn:hover span { opacity: 1; }
+
+@keyframes floatPulse {
+  0%, 100% { box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+  50% { box-shadow: 0 4px 24px rgba(0,0,0,0.3), 0 0 12px rgba(37,211,102,0.3); }
+}
+
+/* Mobile bottom bar */
+.mobile-bottom-bar {
+  display: none;
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: var(--z-floating);
+  background: var(--white);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.12);
+  height: 60px;
+}
+
+.mobile-bottom-bar a {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gray-500);
+  padding: 6px 0;
+  transition: color var(--duration-fast) ease;
+  text-decoration: none;
+}
+
+.mobile-bottom-bar a span.icon { font-size: 20px; }
+.mobile-bottom-bar a:hover { color: var(--royal-blue); }
+.mobile-bottom-bar a.whatsapp { color: #25D366; }
+.mobile-bottom-bar a.whatsapp:hover { color: #1da851; }
+
+/* On mobile, hide floating buttons (use bottom bar instead) */
+@media (max-width: 768px) {
+  .floating-cta { display: none; }
+  .mobile-bottom-bar { display: flex; }
+}

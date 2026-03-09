@@ -1,0 +1,96 @@
+/* ============================================================
+   PHOTO SQUARE — CSS Custom Properties (Design Tokens)
+   ============================================================ */
+
+:root {
+  /* ── Primary ── */
+  --royal-blue:        #1a3a6b;
+  --royal-blue-light:  #2a5298;
+  --royal-blue-dark:   #0f2649;
+
+  /* ── Accent ── */
+  --gold:              #c9a84c;
+  --gold-light:        #e0c878;
+  --gold-dark:         #a08030;
+
+  /* ── Neutrals ── */
+  --white:             #ffffff;
+  --off-white:         #f8f7f4;
+  --cream:             #f0ece3;
+  --gray-100:          #e8e4dc;
+  --gray-200:          #d0ccc4;
+  --gray-300:          #a8a49c;
+  --gray-400:          #787470;
+  --gray-500:          #504c48;
+  --gray-600:          #383430;
+  --charcoal:          #1c1a18;
+  --black:             #0a0908;
+
+  /* ── Semantic ── */
+  --success:           #2e7d32;
+  --error:             #c62828;
+  --warning:           #f9a825;
+
+  /* ── Gradients ── */
+  --gradient-hero:     linear-gradient(135deg, rgba(15,38,73,0.88), rgba(26,58,107,0.65));
+  --gradient-gold:     linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+  --gradient-dark:     linear-gradient(180deg, var(--black), var(--royal-blue-dark));
+
+  /* ── Shadows ── */
+  --shadow-sm:         0 2px 8px rgba(10,9,8,0.08);
+  --shadow-md:         0 4px 20px rgba(10,9,8,0.12);
+  --shadow-lg:         0 8px 40px rgba(10,9,8,0.18);
+  --shadow-gold:       0 4px 20px rgba(201,168,76,0.3);
+  --shadow-blue:       0 4px 20px rgba(26,58,107,0.25);
+
+  /* ── Spacing ── */
+  --space-2xs:  0.25rem;
+  --space-xs:   0.5rem;
+  --space-sm:   0.75rem;
+  --space-md:   1rem;
+  --space-lg:   1.5rem;
+  --space-xl:   2rem;
+  --space-2xl:  3rem;
+  --space-3xl:  4rem;
+  --space-4xl:  6rem;
+  --space-5xl:  8rem;
+  --section-pad: clamp(4rem, 8vw, 8rem);
+
+  /* ── Border Radius ── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   20px;
+  --radius-full: 9999px;
+
+  /* ── Transitions ── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast:      200ms;
+  --duration-normal:    400ms;
+  --duration-slow:      700ms;
+  --duration-cinematic: 1200ms;
+
+  /* ── Type Scale ── */
+  --text-xs:    clamp(0.7rem, 0.65rem + 0.25vw, 0.8rem);
+  --text-sm:    clamp(0.8rem, 0.75rem + 0.25vw, 0.9rem);
+  --text-base:  clamp(0.95rem, 0.9rem + 0.25vw, 1.05rem);
+  --text-lg:    clamp(1.1rem, 1rem + 0.5vw, 1.3rem);
+  --text-xl:    clamp(1.3rem, 1.1rem + 1vw, 1.8rem);
+  --text-2xl:   clamp(1.8rem, 1.4rem + 2vw, 2.8rem);
+  --text-3xl:   clamp(2.4rem, 1.8rem + 3vw, 4rem);
+  --text-hero:  clamp(3rem, 2rem + 5vw, 7rem);
+
+  /* ── Z-index layers ── */
+  --z-base:      1;
+  --z-overlay:   100;
+  --z-nav:       500;
+  --z-modal:     900;
+  --z-preloader: 9999;
+  --z-floating:  9998;
+  --z-cursor:    10000;
+
+  /* ── Layout ── */
+  --max-width: 1200px;
+  --nav-height: 72px;
+}

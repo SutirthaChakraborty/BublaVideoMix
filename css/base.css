@@ -1,0 +1,121 @@
+/* ============================================================
+   PHOTO SQUARE — Base Global Styles
+   ============================================================ */
+
+html {
+  font-size: 16px;
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  font-size: var(--text-base);
+  color: var(--charcoal);
+  background-color: var(--off-white);
+  overflow-x: hidden;
+}
+
+body[lang="bn"],
+:lang(bn) body {
+  font-family: 'Noto Sans Bengali', 'DM Sans', system-ui, sans-serif;
+  line-height: 1.8;
+}
+
+html[lang="bn"] body {
+  font-family: 'Noto Sans Bengali', 'DM Sans', system-ui, sans-serif;
+  line-height: 1.8;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--gray-100); }
+::-webkit-scrollbar-thumb {
+  background: var(--royal-blue-light);
+  border-radius: var(--radius-full);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+/* ── Selection ── */
+::selection {
+  background: var(--royal-blue-light);
+  color: var(--white);
+}
+
+/* ── Section Base ── */
+.section {
+  padding: var(--section-pad) 0;
+  position: relative;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+/* ── Section Header ── */
+.section-header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.section-header__overline {
+  display: inline-block;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: var(--space-sm);
+}
+
+.section-header__title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: var(--text-3xl);
+  font-weight: 700;
+  color: var(--charcoal);
+  margin-bottom: var(--space-sm);
+  line-height: 1.15;
+}
+
+.section-header__title--light {
+  color: var(--white);
+}
+
+.section-header__subtitle {
+  font-size: var(--text-lg);
+  color: var(--gray-400);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.section-header__subtitle--light {
+  color: var(--gray-200);
+}
+
+/* Gold decorative line */
+.section-header::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--gradient-gold);
+  margin: var(--space-lg) auto 0;
+  border-radius: var(--radius-full);
+}
+
+/* ── Background Variants ── */
+.section--dark {
+  background: var(--gradient-dark);
+  color: var(--white);
+}
+
+.section--cream {
+  background: var(--cream);
+}
+
+.section--blue {
+  background: var(--royal-blue-dark);
+  color: var(--white);
+}

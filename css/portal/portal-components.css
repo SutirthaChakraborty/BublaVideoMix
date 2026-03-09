@@ -1,0 +1,21 @@
+.portal-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.portal-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius-full);
+  background: rgba(26, 58, 107, 0.08);
+  color: var(--royal-blue);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.portal-muted {
+  color: var(--gray-400);
+}

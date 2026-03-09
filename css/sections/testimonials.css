@@ -1,0 +1,104 @@
+/* ── Testimonials ── */
+.testimonials { background: var(--off-white); overflow: hidden; }
+
+.testimonials__carousel {
+  position: relative;
+  overflow: hidden;
+  margin: 0 -5vw;
+  padding: var(--space-xl) 0;
+}
+
+.testimonials__track {
+  display: flex;
+  gap: var(--space-xl);
+  animation: scrollTestimonials 30s linear infinite;
+}
+
+.testimonials__track:hover { animation-play-state: paused; }
+
+@keyframes scrollTestimonials {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.testimonial-card {
+  flex-shrink: 0;
+  width: 380px;
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.testimonial-card__quote-mark {
+  position: absolute;
+  top: 12px;
+  left: 16px;
+  font-size: 80px;
+  font-family: 'Cormorant Garamond', serif;
+  color: rgba(201,168,76,0.12);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.testimonial-card__stars {
+  color: var(--gold);
+  font-size: var(--text-lg);
+  letter-spacing: 2px;
+  margin-bottom: var(--space-md);
+}
+
+.testimonial-card__text {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: var(--text-lg);
+  font-style: italic;
+  color: var(--gray-600);
+  line-height: 1.65;
+  margin-bottom: var(--space-lg);
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  border-top: 1px solid var(--gray-100);
+  padding-top: var(--space-md);
+}
+
+.testimonial-card__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--royal-blue);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--text-lg);
+  flex-shrink: 0;
+}
+
+.testimonial-card__name {
+  font-weight: 600;
+  color: var(--charcoal);
+  font-size: var(--text-base);
+}
+
+.testimonial-card__service {
+  font-size: var(--text-xs);
+  color: var(--gold-dark);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 2px;
+}
+
+@media (max-width: 768px) {
+  .testimonial-card { width: calc(100vw - 4rem); }
+}
