@@ -1,0 +1,235 @@
+/* ============================================================
+   PHOTO SQUARE — Personalization & Occasion Styles
+   Occasion banner, gift ideas grid, service card enhancements
+   ============================================================ */
+
+/* ── Occasion Banner ──────────────────────────────────────── */
+#occasion-banner {
+  --ob-accent: #c9a96e;
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  background: linear-gradient(135deg, #0f2649 0%, #1a3a6b 60%, color-mix(in srgb, var(--ob-accent) 30%, #1a3a6b) 100%);
+  border-bottom: 2px solid var(--ob-accent);
+  padding: 0;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.ob-inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.ob-badge {
+  background: var(--ob-accent);
+  color: #0f2649;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.ob-emoji {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.ob-text {
+  font-size: 13.5px;
+  color: rgba(255,255,255,0.9);
+  flex: 1;
+  min-width: 160px;
+}
+
+.ob-text strong {
+  color: var(--ob-accent);
+  margin-right: 4px;
+}
+
+.ob-btn {
+  background: var(--ob-accent);
+  color: #0f2649;
+  font-weight: 700;
+  font-size: 12px;
+  padding: 7px 18px;
+  border-radius: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.ob-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(201,169,110,0.45);
+}
+
+.ob-close {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 6px;
+  line-height: 1;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.ob-close:hover { color: #fff; }
+
+/* ── Featured service card (occasion-highlighted) ─────────── */
+.service-card--featured {
+  border: 1.5px solid var(--gold, #c9a96e) !important;
+  box-shadow: 0 0 0 4px rgba(201, 169, 110, 0.14), 0 8px 32px rgba(0,0,0,0.12) !important;
+  position: relative;
+}
+
+.service-card__occasion-badge {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #c9a96e, #e8c78e);
+  color: #0f2649;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+/* ── Service card blog link ───────────────────────────────── */
+.service-card__blog-link {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--gold, #c9a96e);
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+}
+.service-card__blog-link:hover { color: var(--gold-light, #e8c78e); }
+
+/* ── Gift Ideas Section ───────────────────────────────────── */
+.gift-ideas {
+  background: var(--surface, #f8f9fb);
+  padding: 80px 0;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+.gift-ideas__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.gift-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1.5px solid transparent;
+  position: relative;
+}
+.gift-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 36px rgba(0,0,0,0.13);
+}
+
+.gift-card--highlight {
+  border-color: var(--gold, #c9a96e);
+  background: linear-gradient(145deg, #fffdf5, #ffffff);
+}
+.gift-card--highlight::before {
+  content: '⭐ Featured';
+  position: absolute;
+  top: -10px;
+  right: 16px;
+  background: linear-gradient(135deg, #c9a96e, #e8c78e);
+  color: #0f2649;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.gift-card__emoji {
+  font-size: 36px;
+  margin-bottom: 14px;
+  line-height: 1;
+}
+
+.gift-card__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f2649;
+  margin-bottom: 10px;
+}
+
+.gift-card__desc {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+
+.gift-card__cta {
+  display: inline-flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a3a6b;
+  text-decoration: none;
+  gap: 4px;
+  padding: 7px 16px;
+  border: 1.5px solid #1a3a6b;
+  border-radius: 20px;
+  transition: background 0.15s, color 0.15s;
+}
+.gift-card__cta:hover {
+  background: #1a3a6b;
+  color: #fff;
+}
+
+/* ── Gift Ideas CTA row ───────────────────────────────────── */
+.gift-ideas__cta-row {
+  margin-top: 44px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.gift-ideas__note {
+  font-size: 15px;
+  color: #374151;
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .ob-inner { gap: 8px; padding: 8px 14px; }
+  .ob-text  { font-size: 12.5px; }
+  .gift-ideas__grid { grid-template-columns: 1fr; }
+  .gift-card { padding: 22px 18px; }
+}

@@ -14,7 +14,8 @@ import { initFloatingButtons} from './modules/floating-buttons.js';
 import { initSmoothScroll }   from './modules/smooth-scroll.js';
 import { initCursor }         from './modules/cursor.js';
 import { LanguageManager }    from './modules/language.js';
-import { initRouter }         from './router.js';
+import { initRouter }           from './router.js';
+import { initPersonalization }  from './modules/personalization.js';
 
 // Start preloader immediately
 initPreloader();
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initContactForm();
   initFloatingButtons();
   initCursor();
+  initPersonalization();
 
   console.log('%c📸 Photo Square — Website loaded', 'color:#c9a84c; font-weight:bold; font-size:14px;');
 
