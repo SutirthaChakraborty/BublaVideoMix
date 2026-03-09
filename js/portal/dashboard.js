@@ -56,12 +56,12 @@ export function initDashboard() {
       return;
     }
 
+    // generatePrompt() now includes additional instructions inside the prompt text
     const prompt = promptBuilder.generatePrompt();
     if (!prompt) return;
 
-    const customTextInput    = document.getElementById('customTextInput');
-    const customText         = customTextInput ? customTextInput.value.trim() : '';
-    const negativePrompt     = promptBuilder.getNegativePrompt();
+    // Pass empty customText since it's already embedded in prompt by buildPromptText()
+    const negativePrompt = promptBuilder.getNegativePrompt();
 
     // Show processing
     if (processingEl)  processingEl.classList.add('show');
@@ -74,7 +74,7 @@ export function initDashboard() {
         base64: uploader.getBase64(),
         selectedTools: Array.from(promptBuilder.selected),
         prompt,
-        customText,
+        customText: '',
         negativePrompt,
       });
 

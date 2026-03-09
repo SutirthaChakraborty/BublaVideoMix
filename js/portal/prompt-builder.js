@@ -67,12 +67,24 @@ const TOOLS = [
 
 const FACE_GUARD = 'IMPORTANT: Preserve ALL faces and people in the photo exactly as they are — do not change, alter, replace, or generate any new faces. Keep every persons identity, expression, and likeness 100% true to the original.';
 
+/** Default negative prompts pre-filled in the textarea for user convenience */
+const DEFAULT_NEGATIVE_PROMPT_TEXT = 'blur, noise, grain, distorted face, extra fingers, deformed hands, watermark, text overlay, artifacts, low quality, overexposed, underexposed';
+
 export class PromptBuilder {
   constructor() {
     this.selected     = new Set();
     this.facePreserve = true;
     this.render();
     this.bindEvents();
+    this._prefillNegativePrompt();
+  }
+
+  /** Pre-fill the negative prompt textarea with sensible defaults */
+  _prefillNegativePrompt() {
+    const el = document.getElementById('negativePromptInput');
+    if (el && !el.value.trim()) {
+      el.value = DEFAULT_NEGATIVE_PROMPT_TEXT;
+    }
   }
 
   render() {
@@ -172,10 +184,15 @@ export class PromptBuilder {
       prompt += ` ${FACE_GUARD}`;
     }
 
-    return prompt;
-  }
+    // Append additional instructions so the generated/displayed prompt is complete
+    const additionalEl = document.getElementById('customTextInput');
+    const additional   = additionalEl ? additionalEl.value.trim() : '';
+    if (additional) {
+      prompt += ` Additional instructions: ${additional}.`;
+    }
 
-  getNegativePrompt() {
+    return prompt;
+}  getNegativePrompt() {
     const el = document.getElementById('negativePromptInput');
     return el ? el.value.trim() : '';
   }

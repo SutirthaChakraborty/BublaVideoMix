@@ -5,8 +5,16 @@
 /** Default API key — users can override in Settings */
 const DEFAULT_API_KEY = 'AIzaSyC0MwuhMdlE0t2UYN-TyjamOjjxfljj1VY';
 const STORAGE_KEY     = 'ps-gemini-api-key';
-const GEMINI_MODEL    = 'gemini-2.5-flash-image';
+const GEMINI_MODEL    = 'gemini-2.0-flash-preview-image-generation';
 const API_TIMEOUT_MS  = 60000;
+
+/** Default negative prompt terms always included to improve quality */
+const DEFAULT_NEGATIVE_PROMPTS = [
+  'blurry', 'out of focus', 'noise', 'grain', 'distorted face',
+  'extra fingers', 'extra limbs', 'deformed hands', 'disfigured',
+  'watermark', 'text overlay', 'logo', 'artifacts', 'pixelated',
+  'low quality', 'overexposed', 'underexposed', 'color bleeding',
+].join(', ');
 
 /** Returns the active API key (user-saved or default) */
 export function getActiveApiKey() {
@@ -69,12 +77,19 @@ export async function handleApiProcess({
  */
 function buildFullPrompt(toolPrompt, customText, negativePrompt) {
   let full = toolPrompt;
+
   if (customText && customText.trim()) {
     full += ` Additional instructions: ${customText.trim()}.`;
   }
-  if (negativePrompt && negativePrompt.trim()) {
-    full += ` Avoid the following in the result: ${negativePrompt.trim()}.`;
-  }
+
+  // Merge user negative prompt with defaults
+  const userNeg   = negativePrompt ? negativePrompt.trim() : '';
+  const mergedNeg = userNeg
+    ? `${DEFAULT_NEGATIVE_PROMPTS}, ${userNeg}`
+    : DEFAULT_NEGATIVE_PROMPTS;
+
+  full += ` Do NOT include or produce any of the following: ${mergedNeg}.`;
+
   return full;
 }
 
@@ -84,7 +99,7 @@ function buildFullPrompt(toolPrompt, customText, negativePrompt) {
  * API reference:
  *   https://ai.google.dev/gemini-api/docs/image-generation
  *
- * Model: gemini-2.5-flash-image
+ * Model: gemini-2.0-flash-preview-image-generation
  * Endpoint: POST https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent
  *
  * Request body:
