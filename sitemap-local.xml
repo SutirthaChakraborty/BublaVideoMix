@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  LOCAL SEO SITEMAP — Photo Square, Maynaguri
+  Covers all local-intent search landing scenarios:
+  - Near-me searches
+  - City + service combos
+  - Bengali language queries
+  Each entry targets a distinct local keyword cluster.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- "photo studio near me" / "photo studio Maynaguri" -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquaremaynaguri.com/"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquaremaynaguri.com/?lang=bn"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.photosquaremaynaguri.com/"/>
+  </url>
+
+  <!-- "photo printing Maynaguri" / "print photos Jalpaiguri" -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquaremaynaguri.com/#services"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquaremaynaguri.com/?lang=bn#services"/>
+  </url>
+
+  <!-- "passport photo Maynaguri" / "passport size photo near me" -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+
+  <!-- "wedding videography Maynaguri" / "wedding photographer near me" -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#videos</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquaremaynaguri.com/#videos"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquaremaynaguri.com/?lang=bn#videos"/>
+  </url>
+
+  <!-- "photo restoration Maynaguri" / "old photo repair near me" -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- "lamination near me" / "photo lamination Jalpaiguri district" -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- "contact photo studio Maynaguri" / "Old Market Maynaguri 735224" -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#contact</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquaremaynaguri.com/#contact"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquaremaynaguri.com/?lang=bn#contact"/>
+  </url>
+
+  <!-- Bengali locale: ফটো স্টুডিও ময়নাগুড়ি -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/?lang=bn</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquaremaynaguri.com/?lang=bn"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquaremaynaguri.com/"/>
+  </url>
+
+</urlset>

@@ -1,4 +1,42 @@
+# robots.txt — Photo Square, Maynaguri
+# https://www.photosquaremaynaguri.com/
+
 User-agent: *
 Allow: /
 
+# Block private portal and non-public files
+Disallow: /portal.html
+Disallow: /js/portal/
+Disallow: /lang/
+
+# Block common junk paths
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /*.php$
+Disallow: /cgi-bin/
+
+# Allow crawlers full access to assets for rich results
+Allow: /assets/
+Allow: /assets/images/
+Allow: /assets/shop_photo/
+Allow: /assets/videos/
+Allow: /css/
+Allow: /js/
+Allow: /lang/en.json
+
+# Crawl-delay hints for heavy SEO bots
+User-agent: AhrefsBot
+Crawl-delay: 10
+
+User-agent: SemrushBot
+Crawl-delay: 10
+
+User-agent: MJ12bot
+Disallow: /
+
+# All sitemaps
 Sitemap: https://www.photosquaremaynaguri.com/sitemap.xml
+Sitemap: https://www.photosquaremaynaguri.com/sitemap-pages.xml
+Sitemap: https://www.photosquaremaynaguri.com/sitemap-services.xml
+Sitemap: https://www.photosquaremaynaguri.com/sitemap-images.xml
+Sitemap: https://www.photosquaremaynaguri.com/sitemap-local.xml

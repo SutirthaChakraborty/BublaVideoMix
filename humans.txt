@@ -1,0 +1,18 @@
+/* TEAM */
+Studio: Photo Square
+Location: Old Market, Maynaguri, West Bengal 735224, India
+Contact: +91 98320 08268
+WhatsApp: https://wa.me/919832008268
+
+/* SITE */
+Last update: 2026/03/09
+Language: English, Bengali (বাংলা)
+Standards: HTML5, CSS3, ES Modules
+Software: VS Code, GitHub Pages
+Components: Gemini 2.0 Flash (AI photo editing)
+
+/* BUSINESS */
+Name: Photo Square (ফটো স্কয়ার)
+Services: Photo Printing, Photo Restoration, Videography, Lamination, Custom Printing, Passport Photos, Photo Editing, Video Editing
+Rating: 5.0 ★ (17 Google reviews)
+Hours: Mon-Sun 09:00-22:00

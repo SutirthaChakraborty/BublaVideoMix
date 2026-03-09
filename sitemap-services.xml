@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Photo Printing -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquaremaynaguri.com/#services"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquaremaynaguri.com/?lang=bn#services"/>
+  </url>
+
+  <!-- Photo Restoration -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Videography -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#videos</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquaremaynaguri.com/#videos"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquaremaynaguri.com/?lang=bn#videos"/>
+  </url>
+
+  <!-- Lamination -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Custom Printing / Gifts -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Passport Photos -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Photo Editing -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Video Editing -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#services</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Contact / Book Now -->
+  <url>
+    <loc>https://www.photosquaremaynaguri.com/#contact</loc>
+    <lastmod>2026-03-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.photosquaremaynaguri.com/#contact"/>
+    <xhtml:link rel="alternate" hreflang="bn" href="https://www.photosquaremaynaguri.com/?lang=bn#contact"/>
+  </url>
+
+</urlset>
