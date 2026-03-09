@@ -2,9 +2,9 @@
    PHOTO SQUARE — Portal Dashboard Controller
    ============================================================ */
 
-import { FileUploadManager } from './file-upload.js?v=20260309d';
-import { PromptBuilder }      from './prompt-builder.js?v=20260309d';
-import { handleApiProcess }   from './api-handler.js?v=20260309d';
+import { FileUploadManager } from './file-upload.js?v=20260309e';
+import { PromptBuilder }      from './prompt-builder.js?v=20260309e';
+import { handleApiProcess }   from './api-handler.js?v=20260309e';
 
 export function initDashboard() {
   // ── Element references ─────────────────────────────────────
@@ -57,7 +57,7 @@ export function initDashboard() {
     }
 
     // Guard: require an API key before hitting the network
-    const { hasUsableApiKey } = await import('./api-handler.js?v=20260309d');
+    const { hasUsableApiKey } = await import('./api-handler.js?v=20260309e');
     if (!hasUsableApiKey()) {
       const settingsBtn = document.getElementById('apiSettingsBtn');
       if (settingsBtn) settingsBtn.click();

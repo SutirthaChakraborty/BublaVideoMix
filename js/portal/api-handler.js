@@ -2,8 +2,8 @@
    PHOTO SQUARE — API Handler (Gemini Image Generation)
    ============================================================ */
 
-/** Default API key — users must set their own key in Settings (⚙️) */
-const DEFAULT_API_KEY = '';  // intentionally blank — default was revoked
+/** Default API key — override in Settings (⚙️) with your own key */
+const DEFAULT_API_KEY = 'AIzaSyD-Esb0h6M-PhoxZrW9G1puoaQGk7sswZs';
 const STORAGE_KEY     = 'ps-gemini-api-key';
 
 /**
