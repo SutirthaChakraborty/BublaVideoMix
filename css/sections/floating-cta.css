@@ -103,4 +103,6 @@
 @media (max-width: 768px) {
   .floating-cta { display: none; }
   .mobile-bottom-bar { display: flex; }
+  /* Push page content up so the fixed bar doesn't cover the footer */
+  footer { padding-bottom: 68px; }
 }
