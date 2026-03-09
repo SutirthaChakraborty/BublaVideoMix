@@ -53,8 +53,10 @@ export function initDashboard() {
       alert('Please upload a photo first.');
       return;
     }
-    if (promptBuilder.selected.size === 0) {
-      alert('Please select at least one tool.');
+    const quickInput = document.getElementById('ps-quick');
+    const hasQuickType = quickInput && quickInput.value.trim().length > 0;
+    if (promptBuilder.selected.size === 0 && !hasQuickType) {
+      alert('Please select at least one tool, or type a custom task in the text box.');
       return;
     }
 
@@ -71,9 +73,11 @@ export function initDashboard() {
     const basePrompt = promptBuilder.generatePrompt();
     if (!basePrompt) return;
 
+    // Append orientation/size recomposition instruction
+    const orientFragment = outputControls.getOrientationPromptFragment();
     // Append generative fill instruction when the user has it enabled
     const fillFragment = outputControls.getGenFillPromptFragment();
-    const prompt = basePrompt + fillFragment;
+    const prompt = basePrompt + orientFragment + fillFragment;
 
     // Pass empty customText since it's already embedded in prompt by buildPromptText()
     const negativePrompt = promptBuilder.getNegativePrompt();

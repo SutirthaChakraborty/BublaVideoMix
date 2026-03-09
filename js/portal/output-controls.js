@@ -137,7 +137,7 @@ export class OutputControls {
       <h4 class="oc-heading">✨ Generative Fill</h4>
       <div class="oc-row">
         <label class="oc-toggle-label" for="oc-genfill">
-          <input type="checkbox" id="oc-genfill" class="oc-toggle-cb"> 
+          <input type="checkbox" id="oc-genfill" class="oc-toggle-cb">
           <span class="oc-toggle-track"></span>
           <span class="oc-toggle-text">Extend canvas with AI fill</span>
         </label>
@@ -308,6 +308,27 @@ export class OutputControls {
     }
 
     return { w, h };
+  }
+
+  /**
+   * Tells Gemini to recompose the image to the target orientation/aspect ratio
+   * BEFORE sending the result back — so a portrait subject becomes landscape, etc.
+   */
+  getOrientationPromptFragment() {
+    const { w, h } = this.getOutputDimensions();
+    if (!w || !h) return ''; // 'Original' preset — no recomposition needed
+
+    const ratio = (w / h).toFixed(2);
+    const preset = SIZE_PRESETS.find(p => p.id === this.preset);
+    const presetLabel = preset && preset.id !== 'orig' && preset.id !== 'custom'
+      ? ` (${preset.label})` : '';
+
+    let orientLabel = '';
+    if (this.orientation === 'landscape') orientLabel = 'landscape (wider than tall)';
+    else if (this.orientation === 'portrait') orientLabel = 'portrait (taller than wide)';
+    else if (this.orientation === 'square')   orientLabel = 'square (equal width and height)';
+
+    return ` IMPORTANT OUTPUT DIMENSIONS: The final output image must be composed and cropped to a ${orientLabel} ${ratio}:1 aspect ratio${presetLabel}. If the source image is in a different orientation, intelligently recompose it — rotate, extend, or crop as needed — so the main subject is well-placed in the new ${orientLabel} frame. Use generative fill to extend the canvas if necessary to achieve the target ratio without cutting off the subject.`;
   }
 
   /** Builds the gen-fill prompt fragment to append to the AI prompt */

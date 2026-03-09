@@ -1064,3 +1064,124 @@
     justify-content: center;
   }
 }
+
+/* ============================================================
+   SMART PROMPT STUDIO — Category tabs + tool grid
+   ============================================================ */
+
+/* Override: tools-grid is now a block container (category UI inside) */
+.tools-grid {
+  display: block;
+  margin-bottom: var(--space-xl);
+}
+
+/* ── Category tab bar ─────────────────────────────────────── */
+.ps-cats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 14px;
+}
+
+.ps-cat-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1.5px solid var(--gray-200, #e5e7eb);
+  background: #fff;
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--gray-500, #6b7280);
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+  font-family: 'DM Sans', sans-serif;
+}
+.ps-cat-btn:hover {
+  border-color: var(--royal-blue-light, #3b82f6);
+  color: var(--royal-blue, #1a3a6b);
+  background: rgba(26,58,107,.04);
+}
+.ps-cat-btn--active {
+  background: var(--royal-blue, #1a3a6b) !important;
+  border-color: var(--royal-blue, #1a3a6b) !important;
+  color: #fff !important;
+}
+
+/* ── Tool cards inside the studio ────────────────────────── */
+.ps-tools {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 12px;
+}
+@media (max-width: 600px) {
+  .ps-tools { grid-template-columns: repeat(3, 1fr); gap: 7px; }
+}
+@media (max-width: 380px) {
+  .ps-tools { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Tool buttons inside ps-tools — slightly smaller for compact grid */
+.ps-tools .tool-btn {
+  min-height: 80px;
+  padding: 10px 6px;
+}
+.ps-tools .tool-btn__icon { font-size: 28px; }
+.ps-tools .tool-btn__label { font-size: 10px; }
+
+/* ── Selected tags row ───────────────────────────────────── */
+.ps-selected {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  min-height: 26px;
+  margin-bottom: 12px;
+}
+
+/* Tag remove button */
+.tool-tag__remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: .9rem;
+  font-weight: 700;
+  color: var(--royal-blue, #1a3a6b);
+  padding: 0 0 0 4px;
+  line-height: 1;
+  opacity: .7;
+  transition: opacity .15s;
+}
+.tool-tag__remove:hover { opacity: 1; }
+
+/* ── Quick-type custom task input ────────────────────────── */
+.ps-quicktype {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-top: 4px;
+}
+
+.ps-quicktype__label {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--gray-500, #6b7280);
+}
+
+.ps-quicktype__input {
+  width: 100%;
+  padding: 9px 14px;
+  border: 1.5px solid var(--gray-200, #e5e7eb);
+  border-radius: 10px;
+  font-size: .88rem;
+  font-family: 'DM Sans', sans-serif;
+  color: var(--gray-700, #374151);
+  background: #fff;
+  transition: border-color .15s;
+  box-sizing: border-box;
+}
+.ps-quicktype__input:focus {
+  outline: none;
+  border-color: var(--royal-blue, #1a3a6b);
+  box-shadow: 0 0 0 3px rgba(26,58,107,.1);
+}
+.ps-quicktype__input::placeholder { color: #9ca3af; }
