@@ -289,15 +289,15 @@
 
   <!-- Scripts -->
   <script type="module">
-    import { initAuth }        from './js/portal/auth.js';
-    import { initDashboard }   from './js/portal/dashboard.js';
-    import { LanguageManager } from './js/modules/language.js';
+    import { initAuth }        from './js/portal/auth.js?v=20260309d';
+    import { initDashboard }   from './js/portal/dashboard.js?v=20260309d';
+    import { LanguageManager } from './js/modules/language.js?v=20260309d';
     import {
       getActiveApiKey,
       saveApiKey,
       resetApiKey,
       hasCustomApiKey,
-    } from './js/portal/api-handler.js';
+    } from './js/portal/api-handler.js?v=20260309d';
 
     // ES modules are deferred — DOM is already ready, no DOMContentLoaded needed
     window.langManager = new LanguageManager();
@@ -326,11 +326,23 @@
     const apiKeyReset     = document.getElementById('apiKeyReset');
     const apiKeySave      = document.getElementById('apiKeySave');
 
+    const REVOKED_KEYS_UI = new Set(['AIzaSyC0MwuhMdlE0t2UYN-TyjamOjjxfljj1VY']);
+
     function openApiModal() {
-      // Pre-fill with the user's saved custom key (or blank if using default)
-      apiKeyInput.value = hasCustomApiKey()
-        ? localStorage.getItem('ps-gemini-api-key')
-        : '';
+      const saved = localStorage.getItem('ps-gemini-api-key') || '';
+      // Detect & auto-clear revoked key
+      if (saved && REVOKED_KEYS_UI.has(saved.trim())) {
+        localStorage.removeItem('ps-gemini-api-key');
+        apiKeyInput.value = '';
+        apiKeyInput.type  = 'password';
+        apiKeyReveal.textContent = '👁️';
+        apiModal.removeAttribute('hidden');
+        showStatus('⚠️ Your previous API key was revoked/leaked and has been cleared. Please enter a new key from aistudio.google.com/apikey', 'error');
+        apiKeyInput.focus();
+        return;
+      }
+      // Normal open: pre-fill with saved key or blank
+      apiKeyInput.value = hasCustomApiKey() ? saved : '';
       apiKeyInput.type  = 'password';
       apiKeyReveal.textContent = '👁️';
       showStatus('', '');
@@ -371,16 +383,25 @@
     apiKeySave.addEventListener('click', () => {
       const val = apiKeyInput.value.trim();
       if (!val) {
-        showStatus('Please enter an API key, or click "Reset to Default".', 'error');
+        showStatus('Please enter an API key.', 'error');
         return;
       }
       if (!val.startsWith('AIza') || val.length < 35) {
         showStatus('That doesn\'t look like a valid Gemini API key (should start with "AIza").', 'error');
         return;
       }
-      saveApiKey(val);
-      showStatus('✓ Custom API key saved.', 'success');
-      setTimeout(closeApiModal, 1200);
+      if (REVOKED_KEYS_UI.has(val)) {
+        showStatus('⚠️ That key is revoked. Get a new one at aistudio.google.com/apikey', 'error');
+        apiKeyInput.value = '';
+        return;
+      }
+      try {
+        saveApiKey(val);
+        showStatus('✓ API key saved! You can now process photos.', 'success');
+        setTimeout(closeApiModal, 1200);
+      } catch (e) {
+        showStatus(e.message, 'error');
+      }
     });
 
     // Reset key (no built-in default exists — just clear and prompt)

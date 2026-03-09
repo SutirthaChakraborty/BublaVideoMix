@@ -7,12 +7,28 @@ const DEFAULT_API_KEY = '';  // intentionally blank — default was revoked
 const STORAGE_KEY     = 'ps-gemini-api-key';
 
 /**
- * Model priority list — most capable first.
- * gemini-2.5-flash-image  : stable, image generation + editing (confirmed working)
- * gemini-3.1-flash-image-preview : newer preview with 2K/4K output support
+ * Known-revoked / leaked keys that must never be used.
+ * They return 403 "API key was reported as leaked" instantly.
+ */
+const REVOKED_KEYS = new Set([
+  'AIzaSyC0MwuhMdlE0t2UYN-TyjamOjjxfljj1VY',
+]);
+
+/**
+ * Model — gemini-2.5-flash-image is the official stable image generation model.
+ * Ref: https://ai.google.dev/gemini-api/docs/models/gemini-2.5-flash-image
  */
 const GEMINI_MODEL    = 'gemini-2.5-flash-image';
-const API_TIMEOUT_MS  = 90000;  // 90s — image gen can be slow
+const API_TIMEOUT_MS  = 90000;
+
+// —— Boot-time cleanup: evict any revoked key saved in localStorage ——
+(function evictRevokedKeys() {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved && REVOKED_KEYS.has(saved.trim())) {
+    localStorage.removeItem(STORAGE_KEY);
+    console.warn('[API] Evicted revoked/leaked API key from localStorage. Please enter a new key in ⚙️ Settings.');
+  }
+})();
 
 /** Default negative prompt terms always included to improve quality */
 const DEFAULT_NEGATIVE_PROMPTS = [
@@ -22,25 +38,29 @@ const DEFAULT_NEGATIVE_PROMPTS = [
   'low quality', 'overexposed', 'underexposed', 'color bleeding',
 ].join(', ');
 
-/** Returns the user-saved API key, or empty string if none set */
+/** Returns the user-saved API key, or empty string if none set / revoked */
 export function getActiveApiKey() {
-  return localStorage.getItem(STORAGE_KEY) || DEFAULT_API_KEY;
+  const k = localStorage.getItem(STORAGE_KEY) || DEFAULT_API_KEY;
+  return REVOKED_KEYS.has(k.trim()) ? '' : k;
 }
 
-/** Returns true if a usable key is available */
+/** Returns true if a usable, non-revoked key is available */
 export function hasUsableApiKey() {
   const k = getActiveApiKey();
-  return k && k.length > 10;
+  return !!(k && k.length > 10);
 }
 
-/** Saves a custom API key to localStorage */
+/** Saves a custom API key to localStorage (rejects known-revoked keys) */
 export function saveApiKey(key) {
   const k = key ? key.trim() : '';
-  if (k) {
-    localStorage.setItem(STORAGE_KEY, k);
-  } else {
+  if (!k) {
     localStorage.removeItem(STORAGE_KEY);
+    return;
   }
+  if (REVOKED_KEYS.has(k)) {
+    throw new Error('That API key has been revoked. Please generate a new key at aistudio.google.com/apikey');
+  }
+  localStorage.setItem(STORAGE_KEY, k);
 }
 
 /** Clears user's custom key, reverting to default */
@@ -126,7 +146,12 @@ async function generateWithGemini(imageBase64, prompt) {
   const apiKey = getActiveApiKey();
 
   if (!apiKey) {
-    throw new Error('No API key set. Click ⚙️ Settings to enter your Gemini API key. Get one free at aistudio.google.com/apikey');
+    throw new Error('No API key set. Click ⚙️ Settings to enter your Gemini API key.\nGet a free key at: aistudio.google.com/apikey');
+  }
+
+  if (REVOKED_KEYS.has(apiKey.trim())) {
+    localStorage.removeItem(STORAGE_KEY);
+    throw new Error('Your saved API key has been revoked/leaked and was cleared.\nPlease open ⚙️ Settings and enter a new key from aistudio.google.com/apikey');
   }
 
   // Separate mime type and raw base64 data from the data URL
