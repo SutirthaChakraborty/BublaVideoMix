@@ -1,0 +1,258 @@
+/* ============================================================
+   Photo Square Portal — Output Controls Panel
+   ============================================================ */
+
+/* ── Container ─────────────────────────────────────────────── */
+.output-controls-panel {
+  background: var(--clr-surface, #fff);
+  border: 1px solid var(--clr-border, #e5e7eb);
+  border-radius: 14px;
+  padding: 0;
+  margin: 18px 0;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+
+/* ── Collapsible toggle header ─────────────────────────────── */
+.oc-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  background: linear-gradient(135deg, #f0f4ff 0%, #e8f4fd 100%);
+  border: none;
+  padding: 14px 18px;
+  cursor: pointer;
+  font-size: .93rem;
+  font-weight: 600;
+  color: var(--clr-primary, #2563eb);
+  text-align: left;
+  transition: background .2s;
+}
+.oc-toggle:hover { background: linear-gradient(135deg, #dbeafe 0%, #ddf4fd 100%); }
+.oc-toggle .oc-toggle-icon {
+  margin-left: auto;
+  font-size: .8rem;
+  transition: transform .25s;
+}
+.oc-toggle.open .oc-toggle-icon { transform: rotate(180deg); }
+
+/* ── Collapsible body ──────────────────────────────────────── */
+.oc-body {
+  padding: 0 18px 18px;
+  display: none;
+}
+.oc-body.open { display: block; }
+
+/* ── Section dividers ──────────────────────────────────────── */
+.oc-section {
+  padding: 14px 0 4px;
+  border-bottom: 1px solid var(--clr-border, #e5e7eb);
+}
+.oc-section:last-child { border-bottom: none; }
+
+.oc-heading {
+  font-size: .82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--clr-text-muted, #6b7280);
+  margin: 0 0 10px;
+}
+
+/* ── Row layout ────────────────────────────────────────────── */
+.oc-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.oc-label {
+  font-size: .83rem;
+  font-weight: 600;
+  color: var(--clr-text, #1f2937);
+  min-width: 90px;
+  flex-shrink: 0;
+}
+
+/* ── Pills ─────────────────────────────────────────────────── */
+.oc-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.oc-pill {
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1.5px solid var(--clr-border, #d1d5db);
+  background: #fff;
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--clr-text, #374151);
+  cursor: pointer;
+  transition: all .15s;
+  white-space: nowrap;
+}
+.oc-pill:hover {
+  border-color: var(--clr-primary, #2563eb);
+  color: var(--clr-primary, #2563eb);
+  background: #eff6ff;
+}
+.oc-pill--active {
+  background: var(--clr-primary, #2563eb) !important;
+  border-color: var(--clr-primary, #2563eb) !important;
+  color: #fff !important;
+  font-weight: 600;
+}
+
+/* ── Select dropdown ───────────────────────────────────────── */
+.oc-select {
+  flex: 1;
+  min-width: 160px;
+  max-width: 260px;
+  padding: 6px 12px;
+  border: 1.5px solid var(--clr-border, #d1d5db);
+  border-radius: 8px;
+  font-size: .84rem;
+  color: var(--clr-text, #1f2937);
+  background: #fff;
+  cursor: pointer;
+  appearance: auto;
+}
+.oc-select:focus { outline: none; border-color: var(--clr-primary, #2563eb); }
+
+/* ── Custom dimension inputs ───────────────────────────────── */
+.oc-dim-inputs {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.oc-input-num {
+  width: 76px;
+  padding: 5px 8px;
+  border: 1.5px solid var(--clr-border, #d1d5db);
+  border-radius: 7px;
+  font-size: .84rem;
+  text-align: center;
+  color: var(--clr-text, #1f2937);
+  background: #fff;
+}
+.oc-input-num:focus { outline: none; border-color: var(--clr-primary, #2563eb); }
+.oc-input-num--sm { width: 62px; }
+.oc-dim-sep { font-weight: 700; color: #9ca3af; }
+.oc-dim-unit { font-size: .78rem; color: #6b7280; }
+
+/* ── DPI row ───────────────────────────────────────────────── */
+.oc-dpi-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ── Quality slider ────────────────────────────────────────── */
+.oc-slider {
+  flex: 1;
+  min-width: 100px;
+  max-width: 200px;
+  accent-color: var(--clr-primary, #2563eb);
+  cursor: pointer;
+}
+.oc-badge {
+  background: var(--clr-primary, #2563eb);
+  color: #fff;
+  font-size: .74rem;
+  font-weight: 700;
+  padding: 1px 8px;
+  border-radius: 10px;
+  margin-left: 4px;
+}
+
+/* ── Toggle switch (gen-fill) ──────────────────────────────── */
+.oc-toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-size: .84rem;
+  color: var(--clr-text, #374151);
+}
+.oc-toggle-cb {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.oc-toggle-track {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+  background: #d1d5db;
+  border-radius: 12px;
+  transition: background .2s;
+  flex-shrink: 0;
+}
+.oc-toggle-track::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+  transition: transform .2s;
+}
+.oc-toggle-cb:checked + .oc-toggle-track {
+  background: var(--clr-primary, #2563eb);
+}
+.oc-toggle-cb:checked + .oc-toggle-track::after {
+  transform: translateX(18px);
+}
+.oc-toggle-text { font-weight: 600; }
+
+.oc-genfill-opts {
+  background: #eff6ff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-top: 6px;
+}
+.oc-hint {
+  font-size: .77rem;
+  color: #6b7280;
+  margin: 6px 0 0;
+  line-height: 1.4;
+}
+
+/* ── Summary bar ───────────────────────────────────────────── */
+.oc-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 10px 18px 14px;
+  background: #f8fafc;
+  border-top: 1px solid var(--clr-border, #e5e7eb);
+}
+.oc-summary__item {
+  font-size: .78rem;
+  font-weight: 600;
+  color: #374151;
+  background: #e0e7ff;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .oc-label { min-width: 72px; font-size: .79rem; }
+  .oc-pill  { padding: 3px 9px; font-size: .76rem; }
+  .oc-select { min-width: 130px; }
+  .oc-toggle { padding: 12px 14px; }
+  .oc-body  { padding: 0 12px 14px; }
+}

@@ -5,11 +5,13 @@
 import { FileUploadManager } from './file-upload.js';
 import { PromptBuilder }      from './prompt-builder.js';
 import { handleApiProcess }   from './api-handler.js';
+import { OutputControls }     from './output-controls.js';
 
 export function initDashboard() {
   // ── Element references ─────────────────────────────────────
   const uploader        = new FileUploadManager();
   const promptBuilder   = new PromptBuilder();
+  const outputControls  = new OutputControls();
 
   const processBtn      = document.getElementById('processBtn');
   const processingEl    = document.getElementById('processingOverlay');
@@ -66,8 +68,12 @@ export function initDashboard() {
     }
 
     // generatePrompt() now includes additional instructions inside the prompt text
-    const prompt = promptBuilder.generatePrompt();
-    if (!prompt) return;
+    const basePrompt = promptBuilder.generatePrompt();
+    if (!basePrompt) return;
+
+    // Append generative fill instruction when the user has it enabled
+    const fillFragment = outputControls.getGenFillPromptFragment();
+    const prompt = basePrompt + fillFragment;
 
     // Pass empty customText since it's already embedded in prompt by buildPromptText()
     const negativePrompt = promptBuilder.getNegativePrompt();
@@ -94,10 +100,19 @@ export function initDashboard() {
       if (resultImg) resultImg.src = resultUrl || uploader.getBase64();
       if (beforeImg) beforeImg.src = uploader.getBase64();
 
+      // Apply output settings (size, orientation, DPI, format, quality) via canvas
+      let finalUrl  = resultUrl || uploader.getBase64();
+      let finalName = `photo-square-result-${Date.now()}.jpg`;
+      try {
+        const rendered = await outputControls.renderForDownload(finalUrl);
+        finalUrl  = rendered.dataUrl;
+        finalName = rendered.filename;
+      } catch (_) { /* fallback to raw API output */ }
+
       // Wire download button (it's an <a> tag now)
       if (downloadBtn) {
-        downloadBtn.href     = resultUrl || uploader.getBase64();
-        downloadBtn.download = `photo-square-result-${Date.now()}.jpg`;
+        downloadBtn.href     = finalUrl;
+        downloadBtn.download = finalName;
       }
 
       setStep(4);

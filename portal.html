@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="css/portal/portal-login.css">
   <link rel="stylesheet" href="css/portal/portal-dashboard.css">
   <link rel="stylesheet" href="css/portal/portal-components.css">
+  <link rel="stylesheet" href="css/portal/portal-output-controls.css">
 </head>
 <body>
 
@@ -230,6 +231,17 @@
           ></textarea>
         </div>
 
+        <!-- ═══ Output Controls ════════════════════════════ -->
+        <div class="output-controls-panel" id="outputControlsPanel">
+          <button class="oc-toggle" id="oc-toggle-btn" aria-expanded="false" aria-controls="oc-body">
+            <span>🎛️ Output Settings — size, DPI, format &amp; generative fill</span>
+            <span class="oc-toggle-icon">▼</span>
+          </button>
+          <div class="oc-body" id="oc-body" role="region">
+            <!-- Rendered by output-controls.js -->
+          </div>
+        </div>
+
         <div class="portal-actions">
           <button class="btn btn--primary btn--lg portal-actions__btn" id="generatePromptBtn" data-i18n="portal.generate_prompt">
             ✨ Generate AI Prompt
@@ -303,6 +315,18 @@
     window.langManager = new LanguageManager();
     initAuth();
     initDashboard();
+
+    /* ── Output Controls collapsible toggle ────────────────────── */
+    const ocToggleBtn = document.getElementById('oc-toggle-btn');
+    const ocBody      = document.getElementById('oc-body');
+    if (ocToggleBtn && ocBody) {
+      ocToggleBtn.addEventListener('click', () => {
+        const isOpen = ocBody.classList.contains('open');
+        ocBody.classList.toggle('open', !isOpen);
+        ocToggleBtn.classList.toggle('open', !isOpen);
+        ocToggleBtn.setAttribute('aria-expanded', String(!isOpen));
+      });
+    }
 
     // Auto-open settings if no API key has been set yet
     if (!hasCustomApiKey()) {
