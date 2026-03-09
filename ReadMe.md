@@ -72,7 +72,7 @@ A private AI-powered photo editing portal accessible at [`/portal.html`](portal.
 ### Gemini API Integration
 | Field | Value |
 |-------|-------|
-| Model | `gemini-2.0-flash-preview-image-generation` |
+| Model | `gemini-2.5-flash-image` |
 | Default key | Pre-configured (works out of the box) |
 | Custom key | Paste at ⚙️ Settings — saved to `localStorage` |
 | Timeout | 60 seconds |

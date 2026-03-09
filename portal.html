@@ -289,15 +289,15 @@
 
   <!-- Scripts -->
   <script type="module">
-    import { initAuth }        from './js/portal/auth.js?v=20260309c';
-    import { initDashboard }   from './js/portal/dashboard.js?v=20260309c';
-    import { LanguageManager } from './js/modules/language.js?v=20260309c';
+    import { initAuth }        from './js/portal/auth.js';
+    import { initDashboard }   from './js/portal/dashboard.js';
+    import { LanguageManager } from './js/modules/language.js';
     import {
       getActiveApiKey,
       saveApiKey,
       resetApiKey,
       hasCustomApiKey,
-    } from './js/portal/api-handler.js?v=20260309c';
+    } from './js/portal/api-handler.js';
 
     // ES modules are deferred — DOM is already ready, no DOMContentLoaded needed
     window.langManager = new LanguageManager();
