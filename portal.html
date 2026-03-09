@@ -23,7 +23,6 @@
   <link rel="stylesheet" href="css/portal/portal-login.css">
   <link rel="stylesheet" href="css/portal/portal-dashboard.css">
   <link rel="stylesheet" href="css/portal/portal-components.css">
-  <link rel="stylesheet" href="css/portal/portal-output-controls.css">
 </head>
 <body>
 
@@ -138,22 +137,22 @@
       <div class="portal-steps" id="portalSteps" role="list" aria-label="Process steps">
         <div class="portal-step active" data-step="1" role="listitem">
           <div class="portal-step__num">1</div>
-          <span class="portal-step__label" data-i18n="portal.upload_btn">Upload</span>
+          <span class="portal-step__label">Upload</span>
         </div>
         <div class="portal-step__connector"></div>
         <div class="portal-step" data-step="2" role="listitem">
           <div class="portal-step__num">2</div>
-          <span class="portal-step__label" data-i18n="portal.choose_step">Choose</span>
+          <span class="portal-step__label">AI Prompt</span>
         </div>
         <div class="portal-step__connector"></div>
         <div class="portal-step" data-step="3" role="listitem">
           <div class="portal-step__num">3</div>
-          <span class="portal-step__label" data-i18n="portal.preview_step">Preview</span>
+          <span class="portal-step__label">Process</span>
         </div>
         <div class="portal-step__connector"></div>
         <div class="portal-step" data-step="4" role="listitem">
           <div class="portal-step__num">4</div>
-          <span class="portal-step__label" data-i18n="portal.download_step">Download</span>
+          <span class="portal-step__label">Download</span>
         </div>
       </div>
 
@@ -176,86 +175,59 @@
                style="display:none" aria-label="Choose photo file">
       </section>
 
-      <!-- STEP 2: Tools -->
-      <section class="portal-section portal-section--locked" id="sectionTools" aria-label="Select AI enhancement tools">
+      <!-- STEP 2: Analyse panel -->
+      <section class="portal-section portal-section--locked" id="sectionTools" aria-label="Analyse photo with AI">
         <div class="portal-section__lock" id="toolsLock">
           <span>☝️</span> <span data-i18n="portal.upload_first">Upload a photo first</span>
         </div>
-        <h3 class="portal-section__heading" data-i18n="portal.dashboard_title">🎛️ Prompt Studio &mdash; choose your edit</h3>
 
-        <div class="tools-grid" id="toolsGrid" role="group" aria-label="AI tool selection">
-          <!-- Rendered by prompt-builder.js -->
-        </div>
+        <div class="analyse-panel">
+          <div class="analyse-panel__icon">🧠</div>
+          <h3 class="analyse-panel__title">Let AI read your photo</h3>
+          <p class="analyse-panel__desc">Gemini will analyse your image and write a professional editing prompt. You can then review and edit the prompt before applying it.</p>
 
-        <div class="selected-tools" id="selectedTools" aria-live="polite"></div>
-
-        <!-- Face Preservation Toggle -->
-        <div class="face-preserve-row">
-          <label class="face-preserve-label" for="facePreserveToggle">
-            <input type="checkbox" id="facePreserveToggle" class="face-preserve-checkbox" checked>
-            <span class="face-preserve-track"></span>
-            <span class="face-preserve-text">
-              🛡️ <strong data-i18n="portal.face_preserve_label">Preserve Faces</strong>
-              <span class="face-preserve-desc" data-i18n="portal.face_preserve_desc">Keep all faces & people exactly as in original</span>
-            </span>
-          </label>
-        </div>
-
-        <!-- Optional custom instructions -->
-        <div class="custom-text-area">
-          <label for="customTextInput" class="custom-text-area__label">
-            💬 <span data-i18n="portal.custom_text_label">Additional Instructions</span>
-            <span class="custom-text-area__optional">(optional)</span>
-          </label>
-          <textarea
-            id="customTextInput"
-            class="custom-text-area__input"
-            rows="2"
-            placeholder="e.g. sharp eyes, DSLR bokeh, blue sky, convert to landscape, studio lighting…"
-            data-i18n-placeholder="portal.custom_text_placeholder"
-          ></textarea>
-        </div>
-
-        <!-- Negative Prompt -->
-        <div class="custom-text-area">
-          <label for="negativePromptInput" class="custom-text-area__label custom-text-area__label--negative">
-            🚫 <span data-i18n="portal.negative_prompt_label">Negative Prompt</span>
-            <span class="custom-text-area__optional">(what to avoid)</span>
-          </label>
-          <textarea
-            id="negativePromptInput"
-            class="custom-text-area__input custom-text-area__input--negative"
-            rows="2"
-            placeholder="e.g. blur, noise, distorted face, extra fingers, watermark..."
-            data-i18n-placeholder="portal.negative_prompt_placeholder"
-          ></textarea>
-        </div>
-
-        <!-- ═══ Output Controls ════════════════════════════ -->
-        <div class="output-controls-panel" id="outputControlsPanel">
-          <button class="oc-toggle" id="oc-toggle-btn" aria-expanded="false" aria-controls="oc-body">
-            <span>🎛️ Output Settings — size, DPI, format &amp; generative fill</span>
-            <span class="oc-toggle-icon">▼</span>
-          </button>
-          <div class="oc-body" id="oc-body" role="region">
-            <!-- Rendered by output-controls.js -->
+          <div class="analyse-panel__hint">
+            <label class="analyse-panel__hint-label" for="hintInput">
+              Photo type <span class="analyse-panel__hint-optional">(optional hint)</span>
+            </label>
+            <input
+              type="text"
+              id="hintInput"
+              class="analyse-panel__hint-input"
+              placeholder="e.g. passport photo, product shot, wedding portrait, DSLR bokeh…"
+              autocomplete="off"
+            >
           </div>
-        </div>
 
-        <div class="portal-actions">
-          <button class="btn btn--primary btn--lg portal-actions__btn" id="generatePromptBtn" data-i18n="portal.generate_prompt">
-            ✨ Generate AI Prompt
-          </button>
-          <button class="btn btn--gold btn--lg portal-actions__btn" id="processBtn">
-            🚀 Process Photo
+          <button class="btn btn--gold btn--lg analyse-panel__btn" id="analyseBtn">
+            🔍 Analyse Photo &amp; Generate Prompt
           </button>
         </div>
+      </section>
 
-        <!-- Generated Prompt -->
-        <div class="prompt-area" id="promptArea">
-          <p class="prompt-area__label">Generated Prompt</p>
-          <p class="prompt-area__text" id="generatedPrompt"></p>
-          <button class="prompt-area__copy" id="copyPromptBtn">📋 Copy</button>
+      <!-- STEP 3: Prompt review -->
+      <section class="portal-section portal-section--hidden" id="sectionPrompt" aria-label="Review AI-generated prompt">
+        <div class="prompt-review">
+          <div class="prompt-review__header">
+            <h3 class="prompt-review__title">✨ AI-Generated Editing Prompt</h3>
+            <div class="prompt-review__actions">
+              <button class="btn-icon" id="editPromptBtn" title="Edit prompt">✏️ Edit</button>
+              <button class="btn-icon" id="regenerateBtn" title="Regenerate prompt">🔄 Regenerate</button>
+            </div>
+          </div>
+
+          <p class="prompt-review__text" id="generatedPrompt"></p>
+          <textarea class="prompt-review__edit" id="promptEditArea" rows="6" style="display:none"></textarea>
+          <div class="prompt-review__meta">
+            <span class="prompt-review__chars" id="promptCharCount"></span>
+          </div>
+
+          <div class="prompt-review__footer">
+            <p class="prompt-review__hint">💡 Review the prompt — edit it if needed — then click Apply to process your photo.</p>
+            <button class="btn btn--gold btn--lg" id="applyBtn">
+              🚀 Apply to Photo
+            </button>
+          </div>
         </div>
       </section>
 
@@ -263,8 +235,8 @@
       <div class="processing-overlay" id="processingOverlay" role="status" aria-live="polite">
         <div class="processing-overlay__content">
           <div class="spinner spinner--gold"></div>
-          <p data-i18n="portal.processing">Processing your photo...</p>
-          <p class="processing-overlay__sub">This may take up to 30 seconds</p>
+          <p id="processingMsg">Processing your photo…</p>
+          <p class="processing-overlay__sub">Please wait, this may take up to 60 seconds</p>
         </div>
       </div>
 
@@ -315,18 +287,6 @@
     window.langManager = new LanguageManager();
     initAuth();
     initDashboard();
-
-    /* ── Output Controls collapsible toggle ────────────────────── */
-    const ocToggleBtn = document.getElementById('oc-toggle-btn');
-    const ocBody      = document.getElementById('oc-body');
-    if (ocToggleBtn && ocBody) {
-      ocToggleBtn.addEventListener('click', () => {
-        const isOpen = ocBody.classList.contains('open');
-        ocBody.classList.toggle('open', !isOpen);
-        ocToggleBtn.classList.toggle('open', !isOpen);
-        ocToggleBtn.setAttribute('aria-expanded', String(!isOpen));
-      });
-    }
 
     // Auto-open settings if no API key has been set yet
     if (!hasCustomApiKey()) {

@@ -74,6 +74,65 @@ export function hasCustomApiKey() {
 }
 
 /**
+ * Calls Gemini with an image and a TEXT-ONLY request (no image output).
+ * Used in Step 1 to analyse the uploaded photo and generate a structured prompt.
+ *
+ * @param {string} imageBase64  - data URL of the uploaded image
+ * @param {string} textPrompt   - instruction to send alongside the image
+ * @returns {Promise<string>}   - plain text response from Gemini
+ */
+export async function analyseImageForPrompt(imageBase64, textPrompt) {
+  const apiKey = getActiveApiKey();
+  if (!apiKey) throw new Error('No API key set. Click ⚙️ Settings to enter your Gemini API key.');
+
+  const mimeMatch = imageBase64.match(/^data:([^;]+);base64,/);
+  const mimeType  = mimeMatch ? mimeMatch[1] : 'image/jpeg';
+  const rawBase64 = imageBase64.replace(/^data:[^;]+;base64,/, '');
+
+  const requestBody = {
+    contents: [{
+      parts: [
+        { text: textPrompt },
+        { inline_data: { mime_type: mimeType, data: rawBase64 } },
+      ],
+    }],
+    generationConfig: { responseModalities: ['TEXT'] },
+  };
+
+  const endpoint =
+    `https://generativelanguage.googleapis.com/v1beta/models/` +
+    `gemini-2.5-flash:generateContent?key=${apiKey}`;
+
+  const res = await Promise.race([
+    fetch(endpoint, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestBody),
+    }),
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error('Request timed out. Please try again.')), API_TIMEOUT_MS)
+    ),
+  ]);
+
+  if (!res.ok) {
+    const errText = await res.text().catch(() => '');
+    let msg = `Gemini API error (HTTP ${res.status})`;
+    try {
+      const errJson = JSON.parse(errText);
+      msg = errJson.error?.message || msg;
+      if (res.status === 403) msg = 'API key denied (403). Click ⚙️ Settings to update it.';
+    } catch { /* ignore */ }
+    throw new Error(msg);
+  }
+
+  const data  = await res.json();
+  const parts = data?.candidates?.[0]?.content?.parts ?? [];
+  const text  = parts.filter(p => p.text).map(p => p.text).join('').trim();
+  if (!text) throw new Error('Gemini did not return a text response. Please try again.');
+  return text;
+}
+
+/**
  * Main entry point called by dashboard.js
  *
  * @param {object}   opts

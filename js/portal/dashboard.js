@@ -1,151 +1,201 @@
 /* ============================================================
-   PHOTO SQUARE — Portal Dashboard Controller
+   PHOTO SQUARE — Portal Dashboard (2-step AI flow)
+
+   Step 1: Upload photo → Gemini reads it → returns a structured
+           improvement prompt the user can review and edit.
+   Step 2: User confirms → Gemini edits the photo with that prompt
+           → download the result.
    ============================================================ */
 
 import { FileUploadManager } from './file-upload.js';
-import { PromptBuilder }      from './prompt-builder.js';
-import { handleApiProcess }   from './api-handler.js';
-import { OutputControls }     from './output-controls.js';
+import { analyseImageForPrompt, handleApiProcess, hasUsableApiKey } from './api-handler.js';
+
+/* ── System prompt sent to Gemini in Step 1 ──────────────── */
+const ANALYSE_SYSTEM_PROMPT = `You are an expert professional photographer and photo retoucher.
+
+I am going to give you a photo. Analyse it carefully and write me a detailed, structured image-editing prompt that I can use to make this photo look professional, polished, and stunning.
+
+The prompt you write will be sent BACK to an image-generation AI (along with the original photo) so it must be written as a direct editing instruction, not a description.
+
+Return ONLY the prompt — no preamble, no explanation, no markdown headers. Just the prompt text.
+
+The prompt must:
+1. Fix any technical issues (exposure, white balance, sharpness, noise)
+2. Improve the composition and framing if needed
+3. Enhance colours and tones to look professional
+4. Improve lighting to look studio-quality
+5. Apply any specific retouching relevant to the subject (portrait, product, landscape, etc.)
+6. Keep all people and faces EXACTLY as they are — do NOT change, alter, or generate any new faces
+7. State clearly what the final result should look like
+
+Write the prompt as a single flowing paragraph of professional instructions.`;
 
 export function initDashboard() {
-  // ── Element references ─────────────────────────────────────
-  const uploader        = new FileUploadManager();
-  const promptBuilder   = new PromptBuilder();
-  const outputControls  = new OutputControls();
+  const uploader = new FileUploadManager();
 
-  const processBtn      = document.getElementById('processBtn');
-  const processingEl    = document.getElementById('processingOverlay');
-  const sectionResult   = document.getElementById('sectionResult');
-  const sectionTools    = document.getElementById('sectionTools');
-  const toolsLock       = document.getElementById('toolsLock');
-  const resultImg       = document.getElementById('resultImage');
-  const beforeImg       = document.getElementById('beforeImage');
-  const downloadBtn     = document.getElementById('downloadBtn');
-  const tryAgainBtn     = document.getElementById('tryAgainBtn');
-  const newPhotoBtn     = document.getElementById('newPhotoBtn');
+  /* ── DOM refs ─────────────────────────────────────────── */
+  const analyseBtn       = document.getElementById('analyseBtn');
+  const applyBtn         = document.getElementById('applyBtn');
+  const regenerateBtn    = document.getElementById('regenerateBtn');
+  const hintInput        = document.getElementById('hintInput');
+  const generatedPrompt  = document.getElementById('generatedPrompt');
+  const promptSection    = document.getElementById('sectionPrompt');
+  const processingEl     = document.getElementById('processingOverlay');
+  const processingMsg    = document.getElementById('processingMsg');
+  const sectionResult    = document.getElementById('sectionResult');
+  const sectionTools     = document.getElementById('sectionTools');
+  const toolsLock        = document.getElementById('toolsLock');
+  const resultImg        = document.getElementById('resultImage');
+  const beforeImg        = document.getElementById('beforeImage');
+  const downloadBtn      = document.getElementById('downloadBtn');
+  const tryAgainBtn      = document.getElementById('tryAgainBtn');
+  const newPhotoBtn      = document.getElementById('newPhotoBtn');
+  const editPromptBtn    = document.getElementById('editPromptBtn');
+  const promptEditArea   = document.getElementById('promptEditArea');
+  const charCount        = document.getElementById('promptCharCount');
 
-  if (!processBtn) return;
+  if (!analyseBtn) return;
 
-  // ── Step management ────────────────────────────────────────
+  /* ── Step helpers ─────────────────────────────────────── */
   function setStep(n) {
     document.querySelectorAll('.portal-step').forEach(el => {
       const s = parseInt(el.dataset.step);
       el.classList.remove('active', 'done');
-      if (s < n)  el.classList.add('done');
+      if (s < n) el.classList.add('done');
       if (s === n) el.classList.add('active');
     });
-    // update connector lines
     document.querySelectorAll('.portal-step__connector').forEach((line, i) => {
       line.classList.toggle('done', i + 1 < n);
     });
   }
 
-  // ── Unlock tools after upload ──────────────────────────────
+  function showProcessing(msg) {
+    if (processingMsg) processingMsg.textContent = msg;
+    if (processingEl) processingEl.classList.add('show');
+  }
+  function hideProcessing() {
+    if (processingEl) processingEl.classList.remove('show');
+  }
+
+  /* ── Unlock section after upload ─────────────────────── */
   document.addEventListener('photo-uploaded', () => {
     if (sectionTools) sectionTools.classList.remove('portal-section--locked');
     if (toolsLock)    toolsLock.style.display = 'none';
     setStep(2);
   });
 
-  // ── Process button ─────────────────────────────────────────
-  processBtn.addEventListener('click', async () => {
-    if (!uploader.getBase64()) {
-      alert('Please upload a photo first.');
-      return;
-    }
-    const quickInput = document.getElementById('ps-quick');
-    const hasQuickType = quickInput && quickInput.value.trim().length > 0;
-    if (promptBuilder.selected.size === 0 && !hasQuickType) {
-      alert('Please select at least one tool, or type a custom task in the text box.');
-      return;
-    }
+  /* ── STEP 1: Analyse image → get prompt ─────────────── */
+  analyseBtn.addEventListener('click', async () => {
+    if (!uploader.getBase64()) { alert('Please upload a photo first.'); return; }
 
-    // Guard: require an API key before hitting the network
-    const { hasUsableApiKey } = await import('./api-handler.js');
-    if (!hasUsableApiKey()) {
-      const settingsBtn = document.getElementById('apiSettingsBtn');
-      if (settingsBtn) settingsBtn.click();
-      alert('Please enter your Gemini API key in Settings (⚙️) first.\n\nGet a free key at: aistudio.google.com/apikey');
+    const { hasUsableApiKey: checkKey } = await import('./api-handler.js');
+    if (!checkKey()) {
+      document.getElementById('apiSettingsBtn')?.click();
+      alert('Please enter your Gemini API key in Settings (⚙️) first.\nGet a free key at: aistudio.google.com/apikey');
       return;
     }
 
-    // generatePrompt() now includes additional instructions inside the prompt text
-    const basePrompt = promptBuilder.generatePrompt();
-    if (!basePrompt) return;
+    const hint = hintInput?.value.trim() || '';
+    const fullAnalysePrompt = hint
+      ? `${ANALYSE_SYSTEM_PROMPT}\n\nAdditional context from the user: ${hint}`
+      : ANALYSE_SYSTEM_PROMPT;
 
-    // Append orientation/size recomposition instruction
-    const orientFragment = outputControls.getOrientationPromptFragment();
-    // Append generative fill instruction when the user has it enabled
-    const fillFragment = outputControls.getGenFillPromptFragment();
-    const prompt = basePrompt + orientFragment + fillFragment;
+    analyseBtn.disabled = true;
+    showProcessing('�� Gemini is reading your photo…');
 
-    // Pass empty customText since it's already embedded in prompt by buildPromptText()
-    const negativePrompt = promptBuilder.getNegativePrompt();
+    try {
+      const promptText = await analyseImageForPrompt(uploader.getBase64(), fullAnalysePrompt);
+      hideProcessing();
 
-    // Show processing
-    if (processingEl)  processingEl.classList.add('show');
-    if (sectionResult) sectionResult.classList.add('portal-section--hidden');
-    processBtn.disabled = true;
+      // Show the prompt section
+      if (promptSection) promptSection.classList.remove('portal-section--hidden');
+      if (generatedPrompt) generatedPrompt.textContent = promptText;
+      if (promptEditArea)  promptEditArea.value = promptText;
+      updateCharCount();
+      setStep(3);
+      promptSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    } catch (err) {
+      hideProcessing();
+      alert('Error analysing photo:\n' + err.message);
+    } finally {
+      analyseBtn.disabled = false;
+    }
+  });
+
+  /* ── Regenerate prompt (re-run Step 1) ───────────────── */
+  regenerateBtn?.addEventListener('click', () => {
+    analyseBtn?.click();
+  });
+
+  /* ── Toggle prompt editor ────────────────────────────── */
+  editPromptBtn?.addEventListener('click', () => {
+    const isEditing = promptEditArea?.style.display !== 'none';
+    if (promptEditArea) promptEditArea.style.display = isEditing ? 'none' : 'block';
+    if (generatedPrompt) generatedPrompt.style.display = isEditing ? 'block' : 'none';
+    if (editPromptBtn) editPromptBtn.textContent = isEditing ? '✏️ Edit Prompt' : '👁️ Preview';
+    if (!isEditing) promptEditArea?.focus();
+  });
+
+  promptEditArea?.addEventListener('input', () => {
+    if (generatedPrompt) generatedPrompt.textContent = promptEditArea.value;
+    updateCharCount();
+  });
+
+  function updateCharCount() {
+    if (!charCount || !promptEditArea) return;
+    charCount.textContent = `${promptEditArea.value.length} chars`;
+  }
+
+  /* ── STEP 2: Apply prompt → edit image ───────────────── */
+  applyBtn?.addEventListener('click', async () => {
+    if (!uploader.getBase64()) { alert('Please upload a photo first.'); return; }
+
+    const prompt = promptEditArea?.value.trim() || generatedPrompt?.textContent?.trim();
+    if (!prompt) { alert('No prompt to apply. Click "Analyse Photo" first.'); return; }
+
+    applyBtn.disabled = true;
+    showProcessing('🚀 Gemini is editing your photo… (may take up to 60s)');
     setStep(3);
 
     try {
       const resultUrl = await handleApiProcess({
         base64: uploader.getBase64(),
-        selectedTools: Array.from(promptBuilder.selected),
+        selectedTools: [],
         prompt,
         customText: '',
-        negativePrompt,
+        negativePrompt: 'blur, noise, grain, distorted face, extra fingers, watermark, artifacts, low quality',
       });
 
-      // Hide processing, show result
-      if (processingEl)  processingEl.classList.remove('show');
+      hideProcessing();
       if (sectionResult) sectionResult.classList.remove('portal-section--hidden');
-
+      if (promptSection) promptSection.classList.add('portal-section--hidden');
       if (resultImg) resultImg.src = resultUrl || uploader.getBase64();
       if (beforeImg) beforeImg.src = uploader.getBase64();
-
-      // Apply output settings (size, orientation, DPI, format, quality) via canvas
-      let finalUrl  = resultUrl || uploader.getBase64();
-      let finalName = `photo-square-result-${Date.now()}.jpg`;
-      try {
-        const rendered = await outputControls.renderForDownload(finalUrl);
-        finalUrl  = rendered.dataUrl;
-        finalName = rendered.filename;
-      } catch (_) { /* fallback to raw API output */ }
-
-      // Wire download button (it's an <a> tag now)
       if (downloadBtn) {
-        downloadBtn.href     = finalUrl;
-        downloadBtn.download = finalName;
+        downloadBtn.href     = resultUrl || uploader.getBase64();
+        downloadBtn.download = `photo-square-${Date.now()}.jpg`;
       }
-
       setStep(4);
-
-      // Scroll to result
-      sectionResult && sectionResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      sectionResult?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     } catch (err) {
-      if (processingEl) processingEl.classList.remove('show');
+      hideProcessing();
       setStep(2);
-      alert('Something went wrong. Please try again.\n' + err.message);
+      alert('Something went wrong:\n' + err.message);
     } finally {
-      processBtn.disabled = false;
+      applyBtn.disabled = false;
     }
   });
 
-  // ── Try Again (go back to tools) ───────────────────────────
-  if (tryAgainBtn) {
-    tryAgainBtn.addEventListener('click', () => {
-      if (sectionResult) sectionResult.classList.add('portal-section--hidden');
-      setStep(2);
-      sectionTools && sectionTools.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  }
+  /* ── Try Again (back to prompt) ──────────────────────── */
+  tryAgainBtn?.addEventListener('click', () => {
+    if (sectionResult) sectionResult.classList.add('portal-section--hidden');
+    if (promptSection) promptSection.classList.remove('portal-section--hidden');
+    setStep(2);
+    promptSection?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 
-  // ── New Photo (full reset) ──────────────────────────────────
-  if (newPhotoBtn) {
-    newPhotoBtn.addEventListener('click', () => {
-      location.reload();
-    });
-  }
+  /* ── New Photo (full reset) ──────────────────────────── */
+  newPhotoBtn?.addEventListener('click', () => location.reload());
 }
