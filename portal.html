@@ -184,7 +184,7 @@
         <div class="analyse-panel">
           <div class="analyse-panel__icon">🧠</div>
           <h3 class="analyse-panel__title">Let AI read your photo</h3>
-          <p class="analyse-panel__desc">Gemini will analyse your image and write a professional editing prompt. You can then review and edit the prompt before applying it.</p>
+          <p class="analyse-panel__desc">Gemini will analyse your image, think about what needs fixing, and write a prompt to make it look professional, DSLR-quality with perfect lighting. That prompt is then sent back with your original photo to generate an amazing result.</p>
 
           <div class="analyse-panel__hint">
             <label class="analyse-panel__hint-label" for="hintInput">
@@ -194,13 +194,13 @@
               type="text"
               id="hintInput"
               class="analyse-panel__hint-input"
-              placeholder="e.g. passport photo, product shot, wedding portrait, DSLR bokeh…"
+              placeholder="e.g. wedding portrait, studio product shot, outdoor DSLR, low-light photo…"
               autocomplete="off"
             >
           </div>
 
           <button class="btn btn--gold btn--lg analyse-panel__btn" id="analyseBtn">
-            🔍 Analyse Photo &amp; Generate Prompt
+            ✨ Analyse &amp; Write Enhancement Prompt
           </button>
         </div>
       </section>
@@ -209,7 +209,7 @@
       <section class="portal-section portal-section--hidden" id="sectionPrompt" aria-label="Review AI-generated prompt">
         <div class="prompt-review">
           <div class="prompt-review__header">
-            <h3 class="prompt-review__title">✨ AI-Generated Editing Prompt</h3>
+            <h3 class="prompt-review__title">✨ AI-Generated DSLR Enhancement Prompt</h3>
             <div class="prompt-review__actions">
               <button class="btn-icon" id="editPromptBtn" title="Edit prompt">✏️ Edit</button>
               <button class="btn-icon" id="regenerateBtn" title="Regenerate prompt">🔄 Regenerate</button>
@@ -223,7 +223,7 @@
           </div>
 
           <div class="prompt-review__footer">
-            <p class="prompt-review__hint">💡 Review the prompt — edit it if needed — then click Apply to process your photo.</p>
+            <p class="prompt-review__hint">💡 Gemini read your image and wrote this DSLR enhancement prompt. Review it, edit if needed, then click Apply — your original photo will be sent with this prompt to generate a professional, DSLR-quality result.</p>
             <button class="btn btn--gold btn--lg" id="applyBtn">
               🚀 Apply to Photo
             </button>

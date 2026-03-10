@@ -11,24 +11,18 @@ import { FileUploadManager } from './file-upload.js';
 import { analyseImageForPrompt, handleApiProcess, hasUsableApiKey } from './api-handler.js';
 
 /* ── System prompt sent to Gemini in Step 1 ──────────────── */
-const ANALYSE_SYSTEM_PROMPT = `You are an expert professional photographer and photo retoucher.
+const ANALYSE_SYSTEM_PROMPT = `Read the image carefully, think about what is wrong or could be improved, and write me a detailed prompt to make this image better and professional — DSLR quality, with fixed and improved lighting — so that when this prompt is given to an image generation AI along with the original image, it will produce an amazing, stunning result.
 
-I am going to give you a photo. Analyse it carefully and write me a detailed, structured image-editing prompt that I can use to make this photo look professional, polished, and stunning.
+Return ONLY the prompt — no preamble, no explanation, no markdown headers, no bullet points. Just the prompt text as a single flowing paragraph of direct editing instructions.
 
-The prompt you write will be sent BACK to an image-generation AI (along with the original photo) so it must be written as a direct editing instruction, not a description.
-
-Return ONLY the prompt — no preamble, no explanation, no markdown headers. Just the prompt text.
-
-The prompt must:
-1. Fix any technical issues (exposure, white balance, sharpness, noise)
-2. Improve the composition and framing if needed
-3. Enhance colours and tones to look professional
-4. Improve lighting to look studio-quality
-5. Apply any specific retouching relevant to the subject (portrait, product, landscape, etc.)
-6. Keep all people and faces EXACTLY as they are — do NOT change, alter, or generate any new faces
-7. State clearly what the final result should look like
-
-Write the prompt as a single flowing paragraph of professional instructions.`;
+The prompt you write MUST:
+- Describe how to fix the lighting (shadows, highlights, catch-lights, direction and quality of light)
+- Specify DSLR-quality improvements: sharp focus, natural shallow depth of field (bokeh) where suitable, correct exposure, clean white balance
+- Fix colour grading to look cinematic and professional
+- Improve skin tones and remove blemishes if a person is present
+- Enhance background — blur, clean up, or replace if distracting
+- Keep ALL faces and people EXACTLY as they are — never alter, regenerate or replace any face
+- State the final visual target clearly (e.g. "result should look like a studio-lit DSLR portrait")`;
 
 export function initDashboard() {
   const uploader = new FileUploadManager();
@@ -97,11 +91,11 @@ export function initDashboard() {
 
     const hint = hintInput?.value.trim() || '';
     const fullAnalysePrompt = hint
-      ? `${ANALYSE_SYSTEM_PROMPT}\n\nAdditional context from the user: ${hint}`
+      ? `${ANALYSE_SYSTEM_PROMPT}\n\nAdditional context about this photo: ${hint}. Factor this in when writing the DSLR enhancement prompt.`
       : ANALYSE_SYSTEM_PROMPT;
 
     analyseBtn.disabled = true;
-    showProcessing('�� Gemini is reading your photo…');
+    showProcessing('🧠 Gemini is reading your photo and writing a DSLR enhancement prompt…');
 
     try {
       const promptText = await analyseImageForPrompt(uploader.getBase64(), fullAnalysePrompt);
@@ -155,7 +149,7 @@ export function initDashboard() {
     if (!prompt) { alert('No prompt to apply. Click "Analyse Photo" first.'); return; }
 
     applyBtn.disabled = true;
-    showProcessing('🚀 Gemini is editing your photo… (may take up to 60s)');
+    showProcessing('🚀 Sending your original photo + prompt to Gemini for DSLR enhancement… (may take up to 60s)');
     setStep(3);
 
     try {
@@ -164,7 +158,7 @@ export function initDashboard() {
         selectedTools: [],
         prompt,
         customText: '',
-        negativePrompt: 'blur, noise, grain, distorted face, extra fingers, watermark, artifacts, low quality',
+        negativePrompt: 'blur, noise, grain, distorted face, altered face, new face, extra fingers, extra limbs, watermark, text overlay, artifacts, low quality, overexposed, underexposed, flat lighting, washed out colors',
       });
 
       hideProcessing();
